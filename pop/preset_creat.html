@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html>
+
+<head>
+    <title>공정 직접 설정</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../css/web.css" />
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+</head>
+
+
+<body>
+    <div class="pop wod" style="height: 91vh;">
+        <div class="wod_top preset">
+            <ul>
+                <li><span>· 명칭</span><input type="text" id="SETTING_PRESET_NAME"></li>
+                <li>
+                    <span>· 구분</span>
+                    <select id="USE_DIVISION_ID">
+                    </select>
+                </li>
+                <li><span>· 관리자</span><input type="text" id="ORIGIN_ACCOUNT_MEMBERNAME"></li>
+                <li><span>· 생성일</span><input type="text" id="today"></li>
+            </ul>
+        </div>
+        <div class="pop_margin">
+            <div class="order_list" style="display: flex;">
+                <div id="orderbox_list" style="display: flex; overflow-y: hidden; width: 90%;">
+                    <!-- <div class="order_box dis">
+                        <a href="#"><span>프레스</span> <span>P001</span></a>
+                    </div>
+                    <div class="order_box">
+                        <a href="#"><span>프레스</span> <span>P001</span></a>
+                    </div>
+                    <div class="order_box sel" id="test">
+                        <a href="#"><span>용접</span> <span>P002</span></a>
+                    </div> -->
+                    <div class="order_box box sel">
+                        <input type="hidden" id="order_box_idx" value="0">
+                        <a href="#"><span id="order_name"></span><span id="order_code"></span></a>
+                    </div>
+                    <div class="order_box order_add">
+                        <a href="#"><img src="../img/ico_plus.png"></a>
+                    </div>
+                </div>
+                <ul style="width: 10%;">
+                    <li style="width: 100%;">
+                        <a href="#" class="order_add"><img src="../img/ico_self_add.png">추가</a>
+                    </li>
+                    <li style="width: 100%;">
+                        <a href="#" onclick="Order_del();"><img src="../img/ico_self_del.png">제거</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="self_cnt fair">
+                    <table>
+                        <tr>
+                            <th style="padding: 3px;">
+                                <b>· 검색</b>
+                                <ul class="setting_title_right" style="margin-top: 0;">
+
+                                    <li>
+                                        <input type="text" id="Search_str">
+                                        <button class="btn_search sml" onclick="Search_Process()"></button>
+                                    </li>
+                                </ul>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="overflow-y: hidden;">
+                                    <div class="fixed-table-container">
+                                        <div class="fixed-table-header-bg"></div>
+                                        <div class="fixed-table-wrapper">
+                                            <table class="fixed-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 30%;">
+                                                            <div>대분류</div>
+                                                        </th>
+                                                        <th style="width: 40%;">
+                                                            <div>명칭</div>
+                                                        </th>
+                                                        <th style="width: 30%;">
+                                                            <div>코드</div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="preset_create_process_tbody">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul class="outcheck">
+                                    <li><label><input id="OutcheckSelect" type="checkbox"><span>외주</span></label></li>
+                                    <li><input id="DisabledValue" type="text" disabled></li>
+                                    <input id="DisabledNo" type="text" style="display: none;">
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="self_cnt uniq">
+                    <table>
+                        <tr>
+                            <th>· 작업 특이사항 <a href="#" class="btn_pluse" onclick="Work_Specialnote_add();"></a></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <table id="preset_create_work_specialnote_table">
+                                        <colgroup>
+                                            <col width="36px">
+                                            <col width="">
+                                        </colgroup>
+                                        <!-- <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>
+                                                <input type="text" style="width: 97%;">
+                                            </td>
+                                        </tr> -->
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="self_cnt time" style="float: right;">
+                    <table>
+                        <tr>
+                            <th>· 작업기준시간</th>
+                        </tr>
+                        <tr>
+                            <td class="clock">
+                                <input type="text" style="width:70px;" id="work_time_input">분
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="self_cnt frecheck">
+                    <table>
+                        <thead>
+                            <th>· 자주검사</th>
+                        </thead>
+                        <tbody>
+                            <table class="fair_fo">
+                                <tr>
+                                    <td>
+                                        <div class="checklist">
+                                            <table>
+                                                <colgroup>
+                                                    <col width="160px">
+                                                    <col width="*">
+                                                </colgroup>
+                                                <tbody id="SelfInspectionList">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="btn_list">
+        <a href="#" class="btn_bs btn blue">다음</a>
+        <div class="modal">
+            <!-- Modal start -->
+            <div class="modal-content">
+                <div>
+                    <div class="pop_head">
+                        <span class="close">&times;</span>
+                        알림
+                    </div>
+                    <div class="pop_content">
+                        공정 Preset 수정사항을 저장하시겠습니까?
+                        <div class="pop_btn_list">
+                            <a href="#" class="btn_bs" onclick="Next()">예</a>
+                            <a href="#" class="btn_bs blue" onclick="modal_delete_cancle();">아니오</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- Modal end-->
+        <!-- Modal start '20210304 추가'-->
+        <div class="modal error_modal">
+            <div class="modal-content">
+                <div>
+                    <div class="pop_head">
+                        <span class="close">&times;</span>
+                        알림
+                    </div>
+                    <div class="pop_content">
+                        필수 공정정보가 입력되지 않았습니다.<br>(공정,작업기준시간)
+                        <div class="pop_btn_list">
+                            <a href="#" class="btn_bs" onclick="error_modal_delete_cancle();" >확인</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Modal end-->
+    </div>
+</body>
+
+<script src="../js/modal.js"></script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/Basic/common.js"></script>
+<script src="../js/ProcessManage/preset_creat_pop.js"></script>
+
+</html>

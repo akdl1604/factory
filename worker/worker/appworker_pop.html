@@ -1,0 +1,32 @@
+
+<html lang="en">
+
+
+<head>
+</head>
+<style>
+    html {
+    width: 900px;
+    height: 900px;
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
+  </style>
+<body>
+    <div>
+        <iframe neme = "pdf" id="iframe" src="C:\\Users\\user\\anaconda3\\envs\\client\\Lib\\site-packages\\matplotlib\\mpl-data\\images\\back.pdf" frameborder="0" width="900" height="560" marginwidth="0" marginheight="0" scrolling="auto"></iframe>
+    </div>
+    <div style="float: left; padding: 10px;">
+        <form>
+            <select name="image" id= "combo" onchange="handleOnChange(this)" style="width:80px;height:30px;">
+        
+            </select>
+        </form>
+    </div>
+    <div style="float: right; padding: 10px;">
+        <input a href="#" type="button" id = "close" value="닫 기" style="width:80px;height:30px;">
+    </div>
+</body>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/appworker_pop.js"></script>
+</html>

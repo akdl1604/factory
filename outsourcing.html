@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">  
+    <link rel="stylesheet" href="css/tabs.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:639px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    <script src="js/tabs_full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="main.html"><img src="img/logo.png"></a></h1>
+            <b>외주 발주,입고</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html">
+                            <img src="img/icon_report.png">작업지시서<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="workorder_plan.html">- 생산 계획 현황</a></li>
+                            <li><a href="workorder.html">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html" class="sel_">
+                            <img src="img/icon_chart_.png">생산현황,이력<img src="img/ico_arrow_.png" class="arrow">
+                        </a>
+                        <ul style="display: block;">
+                            <li><a href="project_job.html">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html"  class="sel">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box">
+                  <div class="ctn_box_inner">
+                   <div id="tabs" style="margin: 0;">
+                    <ul>
+                         <li><a href="#" rel="outsourcing_01.html" class="selected"  onclick="loadit(this)">외주발주현황</a></li>
+                         <li><a href="#" rel="outsourcing_02.html" onClick="loadit(this)">발주입고대장</a></li>
+                    </ul>
+                    <iframe id="container2"></iframe>
+                    </div>
+
+                    
+                    <!-------------------Table End------------------>
+                    <!-------------------button Starts------------------>
+                    
+                    <!-------------------button End------------------>
+                </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src=js/modal.js> /*modal.js */ </script> </body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1.BOM</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/web.css">
+    <link rel="stylesheet" href="../css/tabs.css">
+    <link rel="stylesheet" href="../css/custom_setting.css">
+</head>
+
+<body>
+    <div class="wod">
+        <div class="wod_top">
+            <button onclick="window.open('bom_sel.html', 'BOM 선택', 'left='+(screen.availWidth-1000)/2+',top='+(screen.availHeight-500)/2+', width=1000px,height=500px');" name="print" class="btn_pop">BOM 선택</button>
+        </div>
+        <!-----------------Table start---------------->
+        <div class="tb_overflow-x">
+            <div class="fixed-table-container overflowx" style="">
+                <div class="fixed-table-header-bg"></div>
+                <div class="fixed-table-wrapper">
+                    <table class="fixed-table" id="bom_table">
+
+
+                        <thead>
+                            <tr>
+                                <th style="width: 4%;">
+                                    <div>구분</div>
+                                </th>
+                                <th style="width: 3%;">
+                                    <div>순번</div>
+                                </th>
+                                <th style="width: 4%;">
+                                    <div>Level</div>
+                                </th>
+                                <th style="width: 11%;">
+                                    <div>품번</div>
+                                </th>
+                                <th style="width: 11%;">
+                                    <div>품명</div>
+                                </th>
+                                <th style="width: 3%;">
+                                    <div>수량</div>
+                                </th>
+                                <th style="width: 10%;">
+                                    <div>Bellows Code</div>
+                                </th>
+                                <th style="width: 8%;">
+                                    <div>금형 TYPE</div>
+                                </th>
+                                <th style="width: 7%;">
+                                    <div>금형번호</div>
+                                </th>
+                                <th style="width: 6%;">
+                                    <div>OD</div>
+                                </th>
+                                <th style="width: 6%;">
+                                    <div>ID</div>
+                                </th>
+                                <th style="width: 6%;">
+                                    <div>소재코드</div>
+                                </th>
+                                <th style="width: 6%;">
+                                    <div>소재</div>
+                                </th>
+                                <th style="width: 5%;">
+                                    <div>소재크기</div>
+                                </th>
+                                <th style="width: 5%;">
+                                    <div>소재두께</div>
+                                </th>
+                                <th style="width: 5%;">
+                                    <div>W/D 직경</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <div class="btn_list">
+        <div class="btn_right pop">
+            <a href="#" class="btn_bs blue" id="BOM" onclick="bom_pop_next();">다음</a>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/CreateDepoly/1.bom_pop.js"></script>
+<script src="../js/CreateDepoly/pop_workorder_pop.js"></script>
+
+</html>

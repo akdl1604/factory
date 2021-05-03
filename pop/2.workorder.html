@@ -1,0 +1,68 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1.BOM</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/web.css">
+    <link rel="stylesheet" href="../css/tabs.css">
+</head>
+
+<body>
+    <div class="wod">
+        <div class="wod_top">
+            <select>
+                <option value="2.workorder.html">작업지시서</option>
+                <option value="workorder_WB.html">작업지시서 WB</option>
+                <option value="workorder_OD.html">작업지시서 OD</option>
+                <option value="workorder_ID.html">작업지시서 ID</option>
+                <option value="workorder_PR.html">작업지시서 PR</option>
+                <option value="workorder_BS.html">작업지시서 기본</option>
+                <option value="workorder_PD.html">작업지시서 상품</option>
+                <option value="workorder_MF.html">작업지시서 가공</option>
+                <option value="workorder_FM.html">작업지시서 성형</option>
+                <option value="workorder_VV.html">작업지시서 밸브</option>
+            </select>
+            <div class="pop_top_radio">
+                <label><input type="checkbox" name="checkbox" disabled><span>긴급</span></label>
+                <label><input type="checkbox" name="checkbox" disabled><span>우선</span></label>
+            </div>
+            <div class="pop_top_preset">
+                <span>공정</span>
+                <button class="btn_pop" disabled>Preset불러오기</button>
+                <button class="btn_pop" disabled>직접설정</button>
+            </div>
+        </div>
+        <div class="table_list pop">
+            <!-----------table Start--------------------->
+            <table>
+                <tr>
+                    <td style="height: 75vh; border-right:0; border-bottom: 0;">
+                        <div>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+    <div class="btn_list">
+        <div class="btn_left pop">
+            <a href="#" class="btn_bs blue">저장</a>
+        </div>
+        <div class="btn_right pop">
+            <a href="#" class="btn_bs blue">이전</a>
+            <a href="#" class="btn_bs blue">다음</a>
+
+        </div>
+    </div>
+</body>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/CreateDepoly/pop_workorder_pop.js"></script>
+
+</html>

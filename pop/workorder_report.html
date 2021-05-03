@@ -1,0 +1,147 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>자주 검사 성적서</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/web.css">
+    <link rel="stylesheet" href="../css/tabs.css">
+</head>
+
+<body>
+    <div class="wod">
+        <div class="wod_top">
+            <select onchange="location.href=this.value">
+                <option value="2.workorder.html">작업지시서</option>
+                <option value="workorder_WB.html">작업지시서 WB</option>
+                <option value="workorder_OD.html">작업지시서 OD</option>
+                <option value="workorder_ID.html">작업지시서 ID</option>
+                <option value="workorder_PR.html">작업지시서 PR</option>
+                <option value="workorder_BS.html">작업지시서 기본</option>
+                <option value="workorder_PD.html">작업지시서 상품</option>
+                <option value="workorder_MF.html">작업지시서 가공</option>
+                <option value="workorder_WD.html">작업지시서 용접</option>
+                <option value="workorder_FM.html">작업지시서 성형</option>
+                <option value="workorder_VV.html">작업지시서 밸브</option>
+                <option value="workorder_report.html">자주검사성적서</option>
+            </select>
+            <div class="pop_top_radio">
+                <label><input type="checkbox" name="checkbox"><span>긴급</span></label>
+                <label><input type="checkbox" name="checkbox"><span>우선</span></label>
+            </div>
+            <div class="pop_top_preset">
+
+
+                <button onclick="window.open('self_modify.html', 'BOM 선택', 'left='+(screen.availWidth-950)/2+',top='+(screen.availHeight-620)/2+', width=950px,height=740px');" name="print" class="btn_pop">공정수정</button>
+            </div>
+        </div>
+        <div class="order_form">
+            <div class="rpt_top">
+                <div class="rpt_ci">
+                    <img src="../img/logo.png">
+                    <span>SPACESOLUTIONS CO., LTD</span>
+                </div>
+                <div class="rpt_title">
+                    <h8>자주 검사 성적서</h8>
+                    <span class="title_nm">INSPECTION REPORT</span>
+                </div>
+                <ul class="check">
+                    <li>
+                        <div>
+                            <span>검사</span>
+                           <span>/</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>검토</span>
+                            <span>/</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>승인</span>
+                            <span>/</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="order_form_cnt">
+                
+                <table>
+                   <colgroup>
+                       <col width="9%">
+                       <col width="16%">
+                       <col width="9%">
+                       <col width="16%">
+                       <col width="9%">
+                       <col width="16%">
+                       <col width="9%">
+                       <col width="16%">
+                   </colgroup>
+                    <tr>
+                        <th>프로젝트</th>
+                        <td></td>
+                        <th>고객명</th>
+                        <td></td>
+                        <th>품목코드</th>
+                        <td></td>
+                        <th>JOB 번호</th>
+                        <td></td>
+                    </tr>
+                </table>
+                
+                <table>
+                   <colgroup>
+                       <col width="8%">
+                       <col width="5%">
+                       <col width="17%">
+                       <col width="15%">
+                       <col width="10%">
+                       <col width="15%">
+                       <col width="30%">
+                   </colgroup>
+                    <thead>
+                        <th>구분</th>
+                        <th>번호</th>
+                        <th>검사항목</th>
+                        <th>작업일</th>
+                        <th>작업자</th>
+                        <th>비고</th>
+                        <th>측정값</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <tr>
+                        <th>특이사항</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="btn_list">
+        <div class="btn_left pop">
+            <a href="#" class="btn_bs blue" onclick="workorder_03_save_btn();">저장</a>
+        </div>
+        <div class="btn_right pop">
+            <a href="1.bom.html" class="btn_bs blue" onclick="pop_workorder_btn_click('workorder_prev');">이전</a>
+            <a href="#" class="btn_bs blue" onclick="check_save();">다음</a>
+
+        </div>
+    </div>
+</body>
+<script src="../js/CreateDepoly/pop_workorder_pop.js"></script>
+<script src="../js/CreateDepoly/2.workorder_03_pop.js"></script></html>

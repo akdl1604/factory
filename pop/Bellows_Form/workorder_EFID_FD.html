@@ -1,0 +1,337 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>작업지시서 ID</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../../css/css.css">
+    <link rel="stylesheet" href="../../css/web.css">
+    <link rel="stylesheet" href="../../css/tabs.css">
+
+    <link rel="stylesheet" href="../../css/workorder_customer.css">
+    <link rel="stylesheet" type="text/css" href="../../css/form.css">
+
+    <link rel="stylesheet" href="../../css/datepicker.min.css">
+    <script src="../../js/jquery-3.1.1.min.js"></script>
+    <script src="../../js/datepicker.min.js"></script>
+    <script src="../../js/i18n/datepicker.ko.js"></script>
+</head>
+
+<body>
+    <div class="wod">
+        <div class="wod_top">
+            <select onchange="location.href=this.value">
+                <option value="workorder_WB.html">Bellows 제작</option>
+                <option value="../Common_Form/workorder_BS.html">통합서식</option>
+            </select>
+            <div class="pop_top_radio">
+                <label><input type="checkbox" id ="JobOrder_Emergency_Check" name="checkbox"><span>긴급</span></label>
+                <label><input type="checkbox" id ="JobOrder_First_Check" name="checkbox"><span>우선</span></label>
+            </div>
+            <div class="pop_top_preset">
+
+
+                <button
+                    onclick="window.open('self_modify.html', 'BOM 선택', 'left='+(screen.availWidth-950)/2+',top='+(screen.availHeight-620)/2+', width=950px,height=740px');"
+                    name="print" class="btn_pop">공정수정</button>
+            </div>
+        </div>
+        <div class="order_form">
+
+            <h8>작업지시서</h8>
+            
+            <select class="work_sel" id="select_form">
+                
+            
+            </select>
+            <ul class="check">
+                <li>
+                    <div>
+                        <span>작성</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>검토</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>승인</span>
+
+                    </div>
+                </li>
+            </ul>
+            <div class="order_form_cnt">
+                <ul>
+                    <li><span id="JobOrder_Date"></span></li>
+                    <li><label><input type="checkbox" id="JobOrder_chk_Inventory_Usage"><span>재고사용</span></label></li>
+                    <li><label><input type="checkbox" id="JobOrder_chk_Proceed"><span>프레스 작업 후 공정 진행</span></label></li>
+                    <li><label><input type="checkbox" id="JobOrder_chk_Material_Team"><span>프레스 작업 후 자재팀 불출</span></label></li>
+                </ul>
+
+                <table class="txtct">
+                    <colgroup>
+                        <col width="12%">
+
+                        <col width="12%">
+                        <col width="12%">
+                        <col width="12%">
+
+                        <col width="6%">
+                        <col width="6%">
+                
+                        <col width="8%">
+                        <col width="8%">
+
+                        <col width="2%">
+                        <col width="2%">
+                        <col width="8%">
+                        <col width="8%">
+                        <col width="2%">
+                        <col width="2%">
+                        
+                        <!-- <col width=""> -->
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th colspan="3">수주내용</th>
+                            <th colspan="10">Bellows 제 작 사 양</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>사업명</th>
+                            <td colspan="3"><input type="text" id="JobOrder_Business_Name" maxlength="20" size="40"></inpiut>
+                            </td>
+                            <th colspan="2">금형 관리번호</th>
+                            <td colspan="1">금형 : </td>
+                            <td colspan="1" id="JobOrder_MOLDTYPE"></td>
+                            <td colspan="6" id="JobOrder_MOLDNUMBER"></td>
+
+                        </tr>
+
+                        <tr>
+                            <th>벨로우즈 코드</th>
+                            <td colspan="3" id="JobOrder_BELLOWSCODE">가공 반제품</td>
+                            <th colspan="2">금형 사이즈</th>
+                            <td colspan="2">OD:</td>
+                            <td colspan="2" id="JobOrder_OD"></td>
+                            <td colspan="2">ID:</td>
+                            <td colspan="2" id="JobOrder_C_ID"></td>
+                        </tr>
+
+                        <tr>
+                            <th>품명</th>
+                            <td colspan="3"><input type="text" id="JobOrder_Product_Name" maxlength="20" size="40"></td>
+                            <th rowspan="2" colspan="1">원소재 사양</th>
+                            <th colspan="1"> 자재 Code</th>
+                            <td colspan="8" id="JobOrder_MATERIALCODE"> </td>
+                        </tr>
+
+                        <tr>
+                            <th>수량</th>
+                            <td colspan="3"><input type="text" id ="JobOrder_QUANTITY" maxlength="20" size="40"></td>
+                            <th >Size</th>
+                            <td colspan="2">소재:</td>
+                            <td colspan="2" id="JobOrder_MATERIAL"></td>
+                            <td colspan="2">두께 Inch:</td>
+                            <td colspan="2" id="JobOrder_MATERIALTHICK"></td>
+                        </tr>
+
+                        <tr>
+                            <th rowspan="2">납품처(고객명)</th>
+                            <td rowspan="2"><button
+                                onclick="window.open('../customer_add.html?arg1=' + 2, 'BOM 선택', 'left='+(screen.availWidth-500)/2+',top='+(screen.availHeight-500)/2+', width=500px,height=500px');"
+                                name="납품처선택" class="customer_add">M</button><br><br>
+
+                            <label id="JobOrder_Work_CompanyName"></label>
+                            <input type="hidden" id ="JobOrder_Work_CompanyNumber">
+                            <input type="hidden" id ="JobOrder_Work_CompanyNo">
+                        </td>
+                       
+                                
+                            <th>납기</th>
+                            <td> <input type="text" id="JobOrder_Delivery_Day" maxlength="10" size="15"></td>
+
+                            <th rowspan="2" colspan="2">Rubber Container</th>
+                            <td rowspan="2" colspan="2">사이즈:</td>
+                            <td rowspan="2" colspan="2"><input type="text" id ="JobOrder_SIZE" maxlength="20" size="20"></td>
+                            <td rowspan="2" colspan="2">샤링폭:</td>
+                            <td rowspan="2" colspan="2"><input type="text" id ="JobOrder_SHEARINGWIDTH" maxlength="20" size="20"></td>
+
+                        </tr>
+                        <tr>
+                            <th> 계획 종료일</th>
+                            <td> <input type="text" id="JobOrder_Plan_Day" maxlength="10" size="15"></td>
+                        </tr>
+
+                        <tr>
+                            <th> 작업지시번호</th>
+                            <td colspan="3"><input type="text" id="JobOrder_Number" maxlength="20" size="40"></td>
+
+                            <th colspan="2">프레스 수량</th>
+                            <td colspan="2">MD:</td>
+                            <td colspan="2"> <input type="text" id ="JobOrder_MD" maxlength="20" size="20"></td>
+                            <td colspan="2">FD:</td>
+                            <td colspan="2"> <input type="text" id ="JobOrder_FD" maxlength="20" size="20"></td>
+
+                        </tr>
+
+                        <tr>
+                            <th> 품번</th>
+                            <td colspan="3"><input type="text" id="JobOrder_Product_Number" maxlength="20" size="40"> </td>
+
+                            <th colspan="2">Weldring 직경</th>
+                            <td colspan="2" id="JobOrder_WD"></td>
+                            <th colspan="2">프레스</th>
+                            <td colspan="1"><input type="text" id="JobOrder_PRESSNUMBER" maxlength="20" size="5"></td>
+                            <td colspan="1">호기</td>
+                            <td colspan="1"><input type="text" id="JobOrder_PRESSTON" maxlength="20" size="5"></td>
+                            <td colspan="1">톤</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <table>
+                    <colgroup>
+                        <col width="11%">
+                    </colgroup>
+                    <tr>
+                        <th>CV 수 미정</th>
+                        <td>
+                            <label>
+                                S/R측정 <input type="checkbox">
+                            </label>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <span>1</span>CV=10용접 <img src="../../img/ico_order_form_arrow.png">
+                                </li>
+                                <li>
+                                    <span>2</span>기술팀 검토 후 CV결정 <img src="../../img/ico_order_form_arrow.png">
+                                </li>
+                                <li>
+                                    <span>3</span>제작진행
+                                </li>
+                            </ul>
+                        </td>
+                        <td>재사용</td>
+                        <td class="sel_check">
+
+                            <button class="sel yeobu">여<span></span></button>,
+                            <button class="yeobu">부<span></span></button>
+
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="10">공정코드</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>M</th>
+                            <td>공정작업자</td>
+                            <th>I</th>
+                            <td>품질검사</td>
+                            <th>F</th>
+                            <td>품질최종검사</td>
+                            <th>C</th>
+                            <td>고객사 원천검사</td>
+                            <th>G</th>
+                            <td>정부검사</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <table id="temp_gongjeong" style="table-layout:fixed; width: 100%;">
+                        <colgroup>
+        
+                            <col width="5%">
+                            <col width="5%">
+        
+                            <col width="8%">
+        
+                            <col width="6%">
+                            <col width="4%">
+                            <col width="4%">
+        
+                            <col width="6%">
+                            <col width="6%">
+                            <col width="5%">
+        
+                            <col width="5%">
+                            <col width="5%">
+                            <col width="6%">
+                            <col width="5%">
+        
+                            <col width="6%">
+                            <col width="6%">
+                            <col width="6%">
+        
+                            <col width="3%">
+                            <col width="3%">
+                            <col width="3%">
+                            <col width="3%">
+        
+                        </colgroup>
+        
+                    </table>
+                 </div>
+                <table>
+                    <colgroup>
+                        <col width="5%">
+
+                    </colgroup>
+
+                    <tr>
+                        <th rowspan="4">비고</th>
+                        <th>- 제작 중 발생 하는 특이사항 및 개선요청 사항을 자세하게 기록 할 것 -</th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6"><input type="text" id="JobOrder_Note" size ="100"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"><input type="text" id="JobOrder_Note_2"size ="100"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"><input type="text" id="JobOrder_Note_3"size ="100"></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="btn_list">
+        <div class="btn_left pop">
+            <a href="#" class="btn_bs blue" onclick="workorder_03_save_btn();">저장</a>
+        </div>
+        <div class="btn_right pop">
+            <a href="1.bom.html" class="btn_bs blue" onclick="pop_workorder_btn_click('workorder_prev');">이전</a>
+            <a href="#" class="btn_bs blue" onclick="check_save();">다음</a>
+
+        </div>
+    </div>
+</body>
+<script src="../../js/Basic/common.js"></script>
+<script src="../../js/CreateDepoly/pop_workorder_pop.js"></script>
+<script src="../../js/CreateDepoly/workorder_EFID_FD_pop.js"></script>
+<script src="../../js/CreateDepoly/workorder_Bellows_Common.js"></script>
+<script src="../../js/CreateDepoly/workorder_form_select.js"></script>
+
+</html>

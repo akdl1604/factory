@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+
+</head>
+
+<body>
+    <div class="wrap" >
+        <section>
+            <div class="ctn_box" style="width:auto; height:auto; overflow:auto">
+                <div class="ctn_box_inner">
+                    <div class="table_head">
+                        <b>· Preset 설정</b>
+                        <ul>
+                            <li>· 검 색</li>
+                            <li>
+                                <input type="text" id="SETTING_PRESET_NAME">
+                                <button class="btn_search" onclick="Search_Preset()"></button>
+                            </li>
+                            <li><a href="#" class="btn_refresh" onclick="Refresh_Preset()"></a></li>
+                        </ul>
+                    </div>
+
+                    <!-----------------Table start---------------->
+                    <!-----------------Table start---------------->
+                    <!-----------------Table start---------------->
+                    <div class="tb_overflow-x pset">
+                        <div class="fixed-table-container">
+                            <div class="fixed-table-header-bg"></div>
+                            <div class="fixed-table-wrapper">
+                                <table class="fixed-table" id="preset_table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 3%;">
+                                                <div><input type="checkbox" id="checkAll"></div>
+                                            </th>
+                                            <th style="width: 26%;">
+                                                <div>명칭</div>
+                                            </th>
+                                            <th style="width: 15%;">
+                                                <div>구분</div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div>관리자</div>
+                                            </th>
+                                            <th style="width: 44%;">
+                                                <div>공정흐름</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="workorder_preset_tbody">
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------Table End------------------>
+
+                    <div class="btn_list">
+                        <button class="btn_bs blue">선택</button>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    </section>
+    </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/Basic/common.js"></script>
+    <script src="js/workorder_form_preset_pop.js"></script>
+</body>
+
+</html>

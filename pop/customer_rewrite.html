@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>거래처 추가</title>
+    
+    <link rel="stylesheet" type="text/css" href="../css/web.css" />
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css">
+
+    <script src="../js/jquery-3.1.1.min.js"></script>
+</head>
+
+
+<body>
+    <div class="pop setad">
+        <p id="title">거래처 수정<a href="#"  class="btn_close" onclick="ClosePopup();"></a></p>
+
+        <div class="pop_margin">
+            <table width="100%">
+                <colgroup>
+                   <col width="40%">
+                    <col width="">
+                </colgroup>
+                <tr style="display: none;">
+                    <td><input id="Pop_CompanyNo" type="text" style="width: 96%;"></td>
+                </tr>
+                <tr>
+                    <th>· 사업자 번호</th>
+                    <td><input id="Pop_CompanyNumber" type="text" style="width: 96%;"></td>
+                </tr>
+                <tr>
+                    <th>· 업체명</th>
+                    <td><input id="Pop_CompanyName" type="text" style="width: 96%;"></td>
+                </tr>
+                
+            </table>
+            <div class="btn_list">
+                    <a id="CompanyUpdate_Btn" href="#" class="btn btn_bs blue">저장</a>
+            </div>
+        </div>
+    </div>
+    <script src="../js/Basic/common.js"></script>
+    <script src="../js/AccountManage/customer.js"></script>
+    <script>
+        // 파라메터 정보가 저장될 오브젝트
+        var getParam = function(key){
+            var _parammap = {};
+            document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+                function decode(s) {
+                    return decodeURIComponent(s.split("+").join(" "));
+                }
+     
+                _parammap[decode(arguments[1])] = decode(arguments[2]);
+            });
+
+            return _parammap[key];
+        };
+
+        document.getElementById('Pop_CompanyName').value = getParam("arg1");
+        document.getElementById('Pop_CompanyNumber').value = getParam("arg2");
+        document.getElementById('Pop_CompanyNo').value = getParam("arg3");
+    </script>
+</body>
+</html>

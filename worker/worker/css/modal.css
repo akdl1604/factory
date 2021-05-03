@@ -1,0 +1,121 @@
+/************************************/
+.modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed 
+            background-color: rgb(0,0,0); /* Fallback color
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Modal Content/Box */
+        .modal-content {
+            /*
+            background-color: #fefefe;
+            margin: 4% auto; /* 15% from the top and centered 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;  Could be more or less, depending on screen size */
+            position: fixed;
+            top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 10px 1px #808d9b;
+           
+        }
+.modal-content img{
+    width: auto;
+}
+.modal-content > div{
+    background: white;
+    width: 390px;
+}
+.modal-content.ca{
+    position: fixed;
+    top: 13%;
+    left: 70%;
+}
+.modal-content.ca > .close{
+    box-shadow: 0px 0px 5px 0px #808d9b;
+    background-color: white;
+}
+   /* The Close Button */
+        .close {
+            color: #a3b6c3;
+            
+            font-size: 33px;
+            font-weight: 600;
+            position: absolute;
+            right: 14px;
+            
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+ 
+
+
+.modal.on{
+    display: block;
+}
+.pop_head{
+    height: 56px;
+    line-height: 56px;
+    font-weight: 600;
+    padding-left: 40px;
+    background-color: #dee6ec;
+    border-bottom: 1px solid #a6b6c2;
+    text-align: left;
+    font-size: 16px;
+    color: #42485a;
+    background: #dee6ec url(../img/ico_pop_head.png) 10px no-repeat;
+}
+.pop_content{
+    background-color: white;
+    background: url(../img/bg_pop.png) left no-repeat;
+    padding-top: 50px;
+/*    padding-bottom: 20px;*/
+    font-weight: 600;
+    font-size: 15px;
+    padding-right: 50px;
+    padding-left: 50px;
+    word-break: keep-all;
+    text-align: center;
+    color: black;
+}
+.pop_btn_list{
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+.btn_bs{
+    padding-left: 30px;
+    padding-right: 30px;
+    height:30px;
+    text-align: center;
+    vertical-align: top;
+    line-height: 28px;
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+    background-color:#95a4bf;
+    margin-left: 10px;
+    font-size: 14px;
+}
+.btn_bs.blue{
+    background-color: #6179a3;
+}
+/*
+.modal.on > .modal-content{
+    height: 90%;
+    background-color: white;
+}
+.modal.on > .modal-content > img{
+    height: 100%;
+}
+/*************************************/

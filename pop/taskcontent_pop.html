@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>작업내용 및 특이사항 수정</title>
+    <link rel="stylesheet" type="text/css" href="../css/web.css" />
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+</head>
+
+
+<body>
+    <div class="pop setad">
+        <p>작업내용 및 특이사항 수정<a href="#" class="btn_close" onclick="ClosePopup();"></a></p>
+
+        <div class="pop_margin tdnopadding">
+            <table id="CompanyTable" style="width: 100%;">
+                <colgroup>
+                    <col width="87px">
+                    <col width="*">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>내용</th>
+                        <td><input id="ORIGIN_UNIQUESS_CONTEXT" type="text" style="width: 800px;"></td>
+                    </tr>
+                    <tr style="display: none;">
+                        <td><input id="ORIGIN_UNIQUESS_ID" type="text" style="display: none;"></td>
+                        <td><input id="ORIGIN_PROCESS_ID" type="text" style="display: none;"></td>
+                    </tr>
+                </thead>
+            </table>
+            <div class="btn_list">
+                <a id="SelectBt" href="#" class="btn btn_bs blue">저장</a>
+            </div>
+        </div>
+
+        <script src="../js/Basic/common.js"></script>
+        <script src="../js/ProcessManage/taskcontent_pop.js"></script>
+
+        <script>
+            // 파라메터 정보가 저장될 오브젝트
+            var getParam = function (key) {
+                var _parammap = {};
+                document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+                    function decode(s) {
+                        return decodeURIComponent(s.split("+").join(" "));
+                    }
+
+                    _parammap[decode(arguments[1])] = decode(arguments[2]);
+                });
+
+                return _parammap[key];
+            };
+
+            if (getParam("arg1") == undefined || getParam("arg2") == undefined || getParam("arg3") == undefined) {
+                console.log("내용 값을 받지 않음");
+            } else {
+                //ORIGIN_UNIQUESS_ID - arg1
+                //ORIGIN_PROCESS_ID - arg2
+                //ORIGIN_UNIQUESS_CONTEXT -arg3
+                $('#ORIGIN_UNIQUESS_ID').val(getParam("arg1"));
+                $('#ORIGIN_PROCESS_ID').val(getParam("arg2"));
+                $('#ORIGIN_UNIQUESS_CONTEXT').val(getParam("arg3"));
+            }
+        </script>
+</body>
+
+</html>

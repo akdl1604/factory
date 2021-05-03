@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    <!-- ---------------날짜선택Start----------->
+    <link rel="stylesheet" href="css/datepicker.min.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/i18n/datepicker.ko.js"></script>
+    <!-- ---------------날짜선택End----------->
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="main.html"><img src="img/logo.png"></a></h1>
+            <b>프로젝트/JOB NO.</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html">
+                            <img src="img/icon_report.png">작업지시서<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="workorder_plan.html">- 생산 계획 현황</a></li>
+                            <li><a href="workorder.html">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html" class="sel_">
+                            <img src="img/icon_chart_.png">생산현황,이력<img src="img/ico_arrow_.png" class="arrow">
+                        </a>
+                        <ul style="display: block;">
+                            <li><a href="project_job.html" class="sel">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box">
+                    <div class="ctn_box_inner">
+                        <div class="search_table">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <colgroup>
+                                    <col width="120px">
+                                    <col width="">
+                                </colgroup>
+                                <tr>
+                                    <th>기간</th>
+                                    <td>
+                                        <div class="sel_day">
+                                            <select id="select_day">
+                                                <option>등록일</option>
+                                                <option>납기일</option>
+                                            </select>
+                                            <input type="text" id="datepicker1">
+                                            &nbsp;~ &nbsp;
+                                            <input type="text" id="datepicker2">
+                                            <!--                                        <a href="#">달력</a>-->
+                                            <a href="#" id="today" onclick="date_option(1);"
+                                                class="btn_bs sml non">오늘</a>
+                                            <a href="#" id="week" onclick="date_option(2);"
+                                                class="btn_bs sml non">1주일</a>
+                                            <a href="#" id="1month" onclick="date_option(3);"
+                                                class="btn_bs sml non">1개월</a>
+                                            <a href="#" id="3month" onclick="date_option(4);"
+                                                class="btn_bs sml non">3개월</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>기타 내용</th>
+                                    <td>
+                                        <div class="sel_list">
+                                            <ul>
+                                                <li><span>· JOB No.</span> <input type="text" id="Job_no"></li>
+                                                <li><span>· 품명 </span><input type="text" id="product_name"></li>
+                                                <li><span>· 품번</span> <input type="text" id="product_number"></li>
+                                                <li><span>· 납품처</span> <input type="text" id="product_trade"></li>
+                                            </ul>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--------------------- Table End-->
+                        <div class="btn_list">
+
+                            <a href="#" class="btn_bs long non" onclick="search_init();">조건 초기화</a>
+                            <a href="#" class="btn_bs long search" onclick="search_()">검색</a>
+                        </div>
+
+                        <!-----------------Table start---------------->
+                        <div style="margin-top: 40px;">
+                            <table width="100%" style="border: 0;">
+                                <colgroup>
+                                    <col width="75%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td style="vertical-align: top; padding: 0;">
+                                        <div class="fixed-table-container side" style="height:calc(100vh - 401px);">
+                                            <div class="fixed-table-header-bg"></div>
+                                            <div class="fixed-table-wrapper">
+                                                <table class="fixed-table" id="project_job_no_table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 3%;">
+                                                                <div><input type="checkbox"></div>
+                                                            </th>
+                                                            <th style="width: 5%;">
+                                                                <div>순번</div>
+                                                            </th>
+                                                            <th style="width: 15%;">
+                                                                <div>JOB NO.</div>
+                                                            </th>
+                                                            <th style="width: 15%;">
+                                                                <div>품번</div>
+                                                            </th>
+                                                            <th style="width: 10%;">
+                                                                <div>품명</div>
+                                                            </th>
+                                                            <th style="width: 6%;">
+                                                                <div>수량</div>
+                                                            </th>
+                                                            <th style="width: 6%;">
+                                                                <div>단위</div>
+                                                            </th>
+                                                            <th style="width: 8%;">
+                                                                <div>진행공정</div>
+                                                            </th>
+                                                            <th style="width: 8%;">
+                                                                <div>납기일</div>
+                                                            </th>
+                                                            <th style="width: 9%;">
+                                                                <div>납품처</div>
+                                                            </th>
+                                                            <th style="width: 15%;">
+                                                                <div>진행률</div>
+                                                            </th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!--  <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction rd" style="width:90%"></span></span>
+                                                                    <span class="alarm"><img src="img/ico_bell.png"></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction" style="width:0%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction rd" style="width:10%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction" style="width:80%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction ye" style="width:30%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction ye" style="width:50%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction rd" style="width:90%"></span></span>
+                                                                    <span class="alarm"><img src="img/ico_bell.png"></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction" style="width:0%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction rd" style="width:10%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction" style="width:80%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction ye" style="width:30%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction ye" style="width:50%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction rd" style="width:90%"></span></span>
+                                                                    <span class="alarm"><img src="img/ico_bell.png"></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction" style="width:0%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction rd" style="width:10%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction" style="width:80%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction ye" style="width:30%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox"></td>
+                                                            <td>1</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>2</td>
+                                                            <td>SET</td>
+                                                            <td>프레스</td>
+                                                            <td>2021.01.29</td>
+                                                            <td>MCN CO.LTD</td>
+                                                            <td>
+                                                                <div class="iGraph">
+                                                                    <span class="gBar"><span class="gAction ye" style="width:50%"></span></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr> -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                    <td style="vertical-align: top; padding: 0; position: relative;">
+                                        <div class="bom_graph"><!--20210305 style->class 수정--->
+
+                                            <table>
+                                                <tr>
+                                                    <th>사업명</th>
+                                                    <td colspan="3">50N 추력기</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>BOM 품번</th>
+                                                    <td colspan="3">2164640A-00-QM1</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>품명</th>
+                                                    <td>RCS Assembly</td>
+                                                    <th>수량</th>
+                                                    <td>1</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>납품처</th>
+                                                    <td colspan="3">AAAAAA</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>납기일</th>
+                                                    <td colspan="3">2020-05-11</td>
+                                                </tr>
+                                            </table>
+                                            <table>
+                                                <colgroup>
+                                                    <col width="40%">
+                                                    <col width="60%">
+                                                </colgroup>
+                                                <tr>
+                                                    <th>전체 생산 품목</th>
+                                                    <td>50</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>작업지시서 발행</th>
+                                                    <td>50</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>평균 생산 진행률</th>
+                                                    <td>58%</td>
+                                                </tr>
+                                            </table>
+                                            <table>
+                                                <tr>
+                                                    <th>생산 진행 현황</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <canvas id="myChart"></canvas>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <!--
+                        <div class="table_scr right_graph_bom">
+                            <table>
+                                <colgroup>
+                                       <col width="3%">
+                                       <col width="5%">
+                                       <col width="15%">
+                                       <col width="15%">
+                                       <col width="10%">
+                                       <col width="6%">
+                                       <col width="6%">
+                                       <col width="8%">
+                                       <col width="8%">
+                                       <col width="9%">
+                                       <col width="15%">
+                                   </colgroup>
+                                <thead>
+                                    <tr>
+
+                                        <th><input type="checkbox"></th>
+                                        <th>순번</th>
+                                        <th>JOB NO.</th>
+                                        <th>품번</th>
+                                        <th>품명</th>
+                                        <th>수량</th>
+                                        <th>단위</th>
+                                        <th>진행공정</th>
+                                        <th>납기일</th>
+                                        <th>납품처</th>
+                                        <th>진행률</th>
+                                        
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="table_height his_bom02">
+                                <table>
+                                   <colgroup>
+                                       <col width="3%">
+                                       <col width="5%">
+                                       <col width="15%">
+                                       <col width="15%">
+                                       <col width="10%">
+                                       <col width="6%">
+                                       <col width="6%">
+                                       <col width="8%">
+                                       <col width="8%">
+                                       <col width="9%">
+                                       <col width="15%">
+                                   </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>2</td>
+                                            <td>SET</td>
+                                            <td>프레스</td>
+                                            <td>2021.01.29</td>
+                                            <td>MCN CO.LTD</td>
+                                            <td>
+                                                <div class="iGraph">
+                                                    <span class="gBar"><span class="gAction rd" style="width:90%"></span></span>
+                                                    <span class="alarm"><img src="img/ico_bell.png"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>2</td>
+                                            <td>SET</td>
+                                            <td>프레스</td>
+                                            <td>2021.01.29</td>
+                                            <td>MCN CO.LTD</td>
+                                            <td>
+                                                <div class="iGraph">
+                                                    <span class="gBar"><span class="gAction" style="width:0%"></span></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>2</td>
+                                            <td>SET</td>
+                                            <td>프레스</td>
+                                            <td>2021.01.29</td>
+                                            <td>MCN CO.LTD</td>
+                                            <td>
+                                                <div class="iGraph">
+                                                    <span class="gBar"><span class="gAction rd" style="width:10%"></span></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>2</td>
+                                            <td>SET</td>
+                                            <td>프레스</td>
+                                            <td>2021.01.29</td>
+                                            <td>MCN CO.LTD</td>
+                                            <td>
+                                                <div class="iGraph">
+                                                    <span class="gBar"><span class="gAction" style="width:80%"></span></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>2</td>
+                                            <td>SET</td>
+                                            <td>프레스</td>
+                                            <td>2021.01.29</td>
+                                            <td>MCN CO.LTD</td>
+                                            <td>
+                                                <div class="iGraph">
+                                                    <span class="gBar"><span class="gAction ye" style="width:30%"></span></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>2</td>
+                                            <td>SET</td>
+                                            <td>프레스</td>
+                                            <td>2021.01.29</td>
+                                            <td>MCN CO.LTD</td>
+                                            <td>
+                                                <div class="iGraph">
+                                                    <span class="gBar"><span class="gAction ye" style="width:50%"></span></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            
+
+                        </div>
+                        <div class="bom_graph his">
+
+                                <table>
+                                    <tr>
+                                        <th>사업명</th>
+                                        <td colspan="3">50N 추력기</td>
+                                    </tr>
+                                    <tr>
+                                        <th>BOM 품번</th>
+                                        <td colspan="3">2164640A-00-QM1</td>
+                                    </tr>
+                                    <tr>
+                                        <th>품명</th>
+                                        <td>RCS Assembly</td>
+                                        <th>수량</th>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <th>납품처</th>
+                                        <td colspan="3">AAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <th>납기일</th>
+                                        <td colspan="3">2020-05-11</td>
+                                    </tr>
+                                </table>
+                                <table>
+                                    <colgroup>
+                                        <col width="40%">
+                                        <col width="60%">
+                                    </colgroup>
+                                    <tr>
+                                        <th>전체 생산 대상</th>
+                                        <td>50</td>
+                                    </tr>
+                                    <tr>
+                                        <th>작업지시서 발행</th>
+                                        <td>50</td>
+                                    </tr>
+                                    <tr>
+                                        <th>평균 생산 진행률</th>
+                                        <td>58%</td>
+                                    </tr>
+                                </table>
+                                <table>
+                                    <tr>
+                                        <th>생산 진행 현황</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            그래프이미지
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>-->
+                            
+                        <!-------------------Table End------------------>
+                        <!-------------------button Starts------------------>
+                        <div class="btn_list">
+                            <div class="btn_left" style="margin-top: 0;">
+                                <a href="#" class="btn btn_bs" onclick="download_excel();">내보내기(Excel)</a>
+
+                            </div>
+                        </div>
+                        <!-------------------button End------------------>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- <script src=js/modal.js> /*modal.js */</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <script src=js/ProductionStatus/project_job.js> /*modal.js */</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+</body>
+
+</html>

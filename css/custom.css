@@ -1,0 +1,13 @@
+img{
+    width: 83px;
+    height: 83px;
+}
+
+.on{
+    background-color: rgb(226, 226, 226);
+}
+
+.table-scroll-y{
+    overflow-y: scroll;
+    height: 300px;
+}

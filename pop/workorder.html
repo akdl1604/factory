@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>작업지시서</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="../css/web.css" media="screen and (min-height:769px) and (max-height:1080px)">
+    
+    <link rel="stylesheet" href="css/web.css" media="screen and (max-height:1980px)">
+    <style>
+        html,body{
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wod">
+
+        <div class="order_form pop">
+            <div>
+                <ul>
+                    <li><img src="../img/ico_qr.png"></li>
+                    <li><a href="#"><img src="../img/btn_plan.png"><span>도면보기</span></a></li>
+                    <li><a href="#"><img src="../img/btn_asb.png"><span>조립절차</span></a></li>
+                </ul>
+                
+                <a class="btn_bs orange long" onclick="window.open('workorder_stop.html', '', 'left='+(screen.availWidth-700)/2+',top='+(screen.availHeight-450)/2+', width=700px,height=450px');" name="" style="cursor: pointer;">작업중지이력</a>
+                <a class="btn_bs mint long" onclick="window.open('workorder_history.html', '', 'left='+(screen.availWidth-700)/2+',top='+(screen.availHeight-450)/2+', width=700px,height=450px');" name="" style="cursor: pointer;">공정수정이력</a>
+                <h8 align="center">작업지시서</h8>
+            </div>
+            <div class="order_form_cnt">
+                <table>
+                    <colgroup>
+                        <col width="100px">
+                        <col width="">
+                        <col width="40px">
+                        <col width="">
+                        <col width="70px">
+                        <col width="50px">
+                        <col width="70px">
+                        <col width="70px">
+                        <col width="70px">
+                        <col width="70px">
+                    </colgroup>
+                    <tr>
+                        <th>항목</th>
+                        <th colspan="3">수주내용</th>
+                        <th colspan="6">Bellows 제작사양</th>
+                    </tr>
+                    <tr>
+                        <th>사업명</th>
+                        <td colspan="3">벨로우즈피팅</td>
+                        <th colspan="2">금형관리번호</th>
+                        <td colspan="3">금형</td>
+                        <td>PDO1050</td>
+                    </tr>
+                    <tr>
+                        <th>품명</th>
+                        <td colspan="3">Table Bellows Pm Table Assy</td>
+                        <th colspan="2">금형사이즈</th>
+                        <td>OD</td>
+                        <td>1050</td>
+                        <td>ID</td>
+                        <td>0802</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">수량</th>
+                        <td colspan="3" rowspan="2">1</td>
+                        <th rowspan="2">원소재사양</th>
+                        <th>자재CODE</th>
+                        <td colspan="4">MS08S06H130 0.006*130mm</td>
+                    </tr>
+                    <tr>
+                        <th>Size</th>
+                        <td>소재</td>
+                        <td>SUS316</td>
+                        <td>두께Inch</td>
+                        <td>0.006</td>
+                    </tr>
+                    <tr>
+                        <th>납품처(고객명)</th>
+                        <td>(주)소로나</td>
+                        <th>납기</th>
+                        <td>2020.02.26</td>
+                        <th colspan="2">Rubber Container</th>
+                        <td>사이즈</td>
+                        <td></td>
+                        <td>샤링폭</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>작업지시번호</th>
+                        <td colspan="3">J21BO750-900</td>
+                        <th colspan="2">프레스 수량</th>
+                        <td>MD</td>
+                        <td>25</td>
+                        <td>FD</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <th>완료품목코드</th>
+                        <td colspan="3">A0049790-00-R0</td>
+                        <th colspan="2">Weldring 직경</th>
+                        <td>1.8</td>
+                        <td>프레스</td>
+                        <td>호기</td>
+                        <td>톤</td>
+                    </tr>
+                    <tr>
+                        <th>CV 수미정</th>
+                        <td colspan="7">
+                            <ul>
+                                <li>
+                                    <span>1</span>CV=10용접 <img src="../img/ico_order_form_arrow.png">
+                                </li>
+                                <li>
+                                    <span>2</span>기술팀 검토 후 CV결정 <img src="../img/ico_order_form_arrow.png">
+                                </li>
+                                <li>
+                                    <span>3</span>제작진행
+                                </li>
+                            </ul>
+                        </td>
+                        <td>재사용</td>
+                        <td>여,부</td>
+                    </tr>
+                </table>
+                <table class="order_form_btm">
+                    <tr>
+                        <th> 공정번호/공정명</th>
+                        <th>작업자</th>
+                        <th>작업일</th>
+                        <th>작업수량</th>
+                        <th>불량코드</th>
+                        <th>불량수량</th>
+                        <th>양품수량</th>
+                        <th>재고수량</th>
+                        <th>작업시간</th>
+                        <th>특이사항 및 반제품 이력</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="10">
+                            프레스 Md/FD<br>
+                            [공정번호: A020]<br>
+                            [공정번호: A021]
+                        </th>
+                        <th colspan="5">*금형 검증 유/무: 검증된 금형</th>
+                        <th colspan="4">검증 안된 금형</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">구마적</td>
+                        <td rowspan="2">2020.05.15</td>
+                        <td>M : 5</td>
+                        <td></td>
+                        <td>M: 3</td>
+                        <td>M: 7</td>
+                        <td>M: 2</td>
+                        <td></td>
+                        <td rowspan="2">호기 　　　톤</td>
+                    </tr>
+                    <tr>
+                        <td>F: 3</td>
+                        <td></td>
+                        <td>F: 3</td>
+                        <td>F: 6</td>
+                        <td>F: 1</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">구마적</td>
+                        <td rowspan="2">2020.05.15</td>
+                        <td>M : 5</td>
+                        <td></td>
+                        <td>M: 3</td>
+                        <td>M: 7</td>
+                        <td>M: 2</td>
+                        <td></td>
+                        <td rowspan="2">호기 　　　톤</td>
+                    </tr>
+                    <tr>
+                        <td>F: 3</td>
+                        <td></td>
+                        <td>F: 3</td>
+                        <td>F: 6</td>
+                        <td>F: 1</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">구마적</td>
+                        <td rowspan="2">2020.05.15</td>
+                        <td>M : 5</td>
+                        <td></td>
+                        <td>M: 3</td>
+                        <td>M: 7</td>
+                        <td>M: 2</td>
+                        <td></td>
+                        <td rowspan="2">호기 　　　톤</td>
+                    </tr>
+                    <tr>
+                        <td>F: 3</td>
+                        <td></td>
+                        <td>F: 3</td>
+                        <td>F: 6</td>
+                        <td>F: 1</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">구마적</td>
+                        <td rowspan="2">2020.05.15</td>
+                        <td>M : 5</td>
+                        <td></td>
+                        <td>M: 3</td>
+                        <td>M: 7</td>
+                        <td>M: 2</td>
+                        <td></td>
+                        <td rowspan="2">
+                        <label>추가작업 <input type="checkbox"></label>
+                         　<label>아님<input type="checkbox"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>F: 3</td>
+                        <td></td>
+                        <td>F: 3</td>
+                        <td>F: 6</td>
+                        <td>F: 1</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th colspan="9">*공정 중 특이사항:</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="6">
+                            조립 <br>
+                            [공정번호: A040]
+                        </th>
+                        <th colspan="9">*작업 특이사항</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <label>추가작업<input type="checkbox"> </label>
+                            <label>아님 <input type="checkbox"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="8">*공정 중 특이사항:</th>
+                        <td class="btn_file_list"><a href="workorder_02.html">첨부파일목록<img src="../img/ico_workorder_arrow.png"></a></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="6">
+                            조립 <br>
+                            [공정번호: A040]
+                        </th>
+                        <th colspan="9">*작업 특이사항</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <label>추가작업<input type="checkbox"> </label>
+                            <label>아님 <input type="checkbox"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="9">*공정 중 특이사항:</th>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</body></html>

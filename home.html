@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Space Solution</title>
+    <link rel="stylesheet" href="css/css.css">
+    <!--    <link rel="stylesheet" href="css/web.css">-->
+    <!--    <link rel="stylesheet" href="css/chart.css">-->
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="home.html"><img src="img/logo.png"></a></h1>
+            <b>HOME</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html" class="sel">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html">
+                            <img src="img/icon_report.png">작업지시서<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="workorder_plan.html">- 생산 계획 현황</a></li>
+                            <li><a href="workorder.html">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html">
+                            <img src="img/icon_chart.png">생산현황,이력<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="project_job.html">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_home_box main">
+                    <div class="home_box1">
+                        <div class="main_top">
+                            <b>작업지시서</b>
+                            <span>총<h9>11</h9>건</span>
+                            <ul class="day">
+                                <li><span>DATE</span> <b id="date"> 5월3일 </b> </li>
+                                <li><span>TIME</span> <b id="time"> 오후 03:33 </b> </li>
+                            </ul>
+                        </div>
+                        <div class="main_btm">
+                            <div class="graph">
+                                <canvas id="myChart"></canvas>
+                                <!-- partial -->
+                            </div>
+                            <div class="chart_result com">
+                                <b><span></span>완료</b>
+                                <img src="img/ico_complete.png">
+                                <span><b>7</b>건</span>
+                            </div>
+                            <div class="chart_result ing">
+                                <b><span></span>진행</b>
+                                <img src="img/ico_ing.png">
+                                <span><b>7</b>건</span>
+                            </div>
+                            <div class="chart_result bad">
+                                <b><span></span>불량 발생</b>
+                                <img src="img/ico_error.png">
+                                <span><b>7</b>건</span>
+                            </div>
+                            <div class="chart_result out">
+                                <b><span></span>외주 작업</b>
+                                <img src="img/ico_out.png">
+                                <span><b>7</b>건</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ctn_home_box main2">
+                    <div class="home_box1" style="top: 0.3rem;">
+                        <div class="main_top">
+                            <b>NOW</b>
+                            <span>
+                                <h9>4</h9>건
+                            </span>
+                           <p>평균진행률 500%</p>
+                        </div>
+
+                        <!-----------------Table start---------------->
+                        <div class="fixed-table-container" style="height:calc(50vh - 180px); margin-top:27px;">
+                           <div class="fixed-table-header-bg"></div>
+                           <div class="fixed-table-wrapper">
+                            <table  class="fixed-table" >
+                               
+                                <thead>
+                                        <tr>
+                                           <th style="width: 20%;"><div>JOB NO.</div></th>
+                                           <th style="width: 20%;"><div>품명</div></th>
+                                           <th style="width: 20%;"><div>품번</div></th>
+                                           <th style="width: 20%;"><div>현재공정</div></th>
+                                           <th style="width: 20%;"><div>납기일</div></th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody id="home_tbody">
+ <!--                                         <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                         </tr> -->
+                                    </tbody>
+                            </table>
+                            </div>
+                                    
+
+
+                                
+                            
+                        </div><!--table End-->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/Home/home.js"></script>
+</html>

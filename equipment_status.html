@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    <!-- ---------------날짜선택Start----------->
+    <link rel="stylesheet" href="css/datepicker.min.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/i18n/datepicker.ko.js"></script>
+    <!-- ---------------날짜선택End----------->
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="main.html"><img src="img/logo.png"></a></h1>
+            <b>설비 작업 현황</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html">
+                            <img src="img/icon_report.png">작업지시서<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="workorder_plan.html">- 생산 계획 현황</a></li>
+                            <li><a href="workorder.html">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html" class="sel_">
+                            <img src="img/icon_chart_.png">생산현황,이력<img src="img/ico_arrow_.png" class="arrow">
+                        </a>
+                        <ul style="display: block;">
+                            <li><a href="project_job.html">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html" class="sel">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box">
+                    <div class="ctn_box_inner">
+                        <div class="search_table">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <colgroup>
+                                    <col width="120px">
+                                    <col width="">
+                                </colgroup>
+
+                                <tr>
+                                    <th>검색 조건</th>
+                                    <td>
+                                        <div class="sel_list">
+                                            <ul>
+                                                <li>
+                                                    <span>· 대분류</span>
+                                                    <select id="line">
+                                                        <option>프레스</option>
+                                                        <option>납기일2</option>
+                                                        <option>납기일3</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <span>· 설비</span>
+                                                    <select id="equip">
+                                                        <option>용접기 #1</option>
+                                                        <option>납기일2</option>
+                                                        <option>납기일3</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <span>· 작업자</span>
+                                                    <select id="worker">
+                                                        <option>홍길동</option>
+                                                        <option>납기일2</option>
+                                                        <option>납기일3</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--------------------- Table End-->
+                        <div class="btn_list">
+
+                            <a href="#" class="btn_bs long non">조건 초기화</a>
+                            <a href="#" class="btn_bs long search" onclick="search_()">검색</a>
+                        </div>
+
+                        <!-----------------Table start---------------->
+                        <div style="margin-top: 40px;">
+                            <table width="100%" style="border: 0;">
+                                <colgroup>
+                                    <col width="75%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td style="vertical-align: top; padding: 0;">
+                                        <div class="fixed-table-container side"><!--20210305 style->class추가--->
+                                            <div class="fixed-table-header-bg"></div>
+                                            <div class="fixed-table-wrapper">
+                                                <table class="fixed-table" id="equipment_check_table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 15%;">
+                                                                <div>대분류</div>
+                                                            </th>
+                                                            <th style="width: 35%;">
+                                                                <div>설비</div>
+                                                            </th>
+                                                            <th style="width: 20%;">
+                                                                <div>공정</div>
+                                                            </th>
+                                                            <th style="width: 20%;">
+                                                                <div>작업자</div>
+                                                            </th>
+                                                            <th style="width: 10%;">
+                                                                <div>할당(건)</div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!--   <tr>
+                                                            <th>용접</th>
+                                                            <td>용접기 #1</td>
+                                                            <td>홍길동</td>
+                                                            <td>3</td>
+                                                           <td><span class="ft_gr">작업중</span></td>
+                                                        </tr> -->
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                    <td style="vertical-align: top; padding: 0; position: relative;">
+                                        <div class="bom_graph equipst"><!--20210305 class명추가--->
+
+                                            <div class="fixed-table-container" style="margin-top: 0;">
+                                                <div class="fixed-table-header-bg"></div>
+                                                <div class="fixed-table-wrapper">
+                                                    <table class="fixed-table setth euip">
+
+                                                        <thead>
+
+                                                            <tr>
+                                                                <th style="width: 34%"><!--20210305 %수정--->
+                                                                    <div>작업지시번호</div>
+                                                                </th>
+                                                                <th style="width: 33%">
+                                                                    <div>품명</div>
+                                                                </th>
+                                                                <th style="width: 33%">
+                                                                    <div>완료품목코드</div>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#"
+                                                                        onclick="window.open('pop/workorder.html', '작업지시서', 'left='+(screen.availWidth-710)/2+',top='+(screen.availHeight-950)/2+', width=710px,height=950px');"
+                                                                        name="">000001</a>
+
+                                                                </td>
+                                                                <td><a href="#">000002</a></td>
+                                                                <td><a href="#">000003</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><a href="#">000002</a></td>
+                                                                <td><a href="#">000002</a></td>
+                                                                <td><a href="#">000002</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><a href="#">000002</a></td>
+                                                                <td><a href="#">000002</a></td>
+                                                                <td><a href="#">000002</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                            <table class="status">
+                                                <tr>
+                                                    <th>작업할당</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <canvas id="myChart"></canvas>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <script src="js/FacilityOperrations/equipment_status.js"> </script>
+</body>
+
+</html>

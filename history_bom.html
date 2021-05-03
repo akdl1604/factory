@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    <!-- ---------------날짜선택Start----------->
+    <link rel="stylesheet" href="css/datepicker.min.css">
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/i18n/datepicker.ko.js"></script>
+    <!-- ---------------날짜선택End----------->
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="main.html"><img src="img/logo.png"></a></h1>
+            <b>BOM</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder.html">
+                            <img src="img/icon_report.png">작업지시서<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="workorder.html" class="sel">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html" class="sel_">
+                            <img src="img/icon_chart_.png">생산현황,이력<img src="img/ico_arrow_.png" class="arrow">
+                        </a>
+                        <ul style="display: block;">
+                            <li><a href="project_job.html" class="sel">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="history_workorder.html">- 작업 실적 관리</a></li>
+                            <li><a href="history_workorder.html">- 설비 작업 현황</a></li>
+                            <li><a href="history_workorder.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box">
+                    <div class="ctn_box_inner">
+                        <div class="search_table">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <colgroup>
+                                    <col width="120px">
+                                    <col width="">
+                                </colgroup>
+                                <tr>
+                                    <th>기간</th>
+                                    <td>
+                                        <div class="sel_day">
+                                            <select>
+                                                <option>납기일</option>
+                                                <option>납기일2</option>
+                                                <option>납기일3</option>
+                                            </select>
+                                            <input type="text" id="datepicker1">
+                                            &nbsp;~ &nbsp;
+                                            <input type="text" id="datepicker2">
+                                            <!--                                        <a href="#">달력</a>-->
+                                            <a href="#" class="btn_bs sml blue">오늘</a>
+                                            <a href="#" class="btn_bs sml non">1주일</a>
+                                            <a href="#" class="btn_bs sml non">1개월</a>
+                                            <a href="#" class="btn_bs sml non">3개월</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>기타 내용</th>
+                                    <td>
+                                        <div class="sel_list">
+                                            <ul>
+                                                <li><span>· 사업명</span> <input type="text"></li>
+                                                <li><span>· 품명 </span><input type="text"></li>
+                                                <li><span>· 품번</span> <input type="text"></li>
+                                                <li><span>· 납품처</span> <input type="text"></li>
+                                            </ul>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--------------------- Table End-->
+                        <div class="btn_list">
+
+                            <div class="btn_left">
+                                <a href="#" class="btn_bs blue" style="margin-top: 20px;">Excel 내보내기</a>
+                            </div>
+                       
+                            <a href="#" class="btn_bs long non">조건 초기화</a>
+                            <a href="#" class="btn_bs long search">검색</a>
+                        </div>
+
+                        <!-----------------Table start---------------->
+                        
+                        <div class="table_scr">
+                            <table>
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="20%">
+                                    <col width="20%">
+                                    <col width="18%">
+                                    <col width="8%">
+                                    <col width="14%">
+                                    <col width="15%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+
+                                        <th>No.</th>
+                                        <th>사업명</th>
+                                        <th>BOM품번</th>
+                                        <th>Name</th>
+                                        <th>수량</th>
+                                        <th>납품처</th>
+                                        <th>배포일</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="table_height his_bom">
+                                <table>
+
+                                    <colgroup>
+                                        <col width="5%">
+                                        <col width="20%">
+                                        <col width="20%">
+                                        <col width="18%">
+                                        <col width="8%">
+                                        <col width="14%">
+                                        <col width="15%">
+
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><a href="history_bom_02.html">가공반제품</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="history_bom_02.html">50N 추력기</a></td>
+                                            <td>216460A00000-QM1</td>
+                                            <td>RCS Assembly</td>
+                                            <td>1</td>
+                                            <td>XXX</td>
+                                            <td>2020.05.05</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-------------------Table End------------------>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!---------------------------------날짜선택Start----------->
+    <script>
+        //한개만 단순하게 만들때
+        $("#datepicker").datepicker({
+            language: 'ko'
+        });
+
+
+
+
+
+        //두개짜리 제어 연결된거 만들어주는 함수
+        datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
+
+        /*
+         * 달력 생성기
+         * @param sDate 파라미터만 넣으면 1개짜리 달력 생성
+         * @example   datePickerSet($("#datepicker"));
+         * 
+         * 
+         * @param sDate, 
+         * @param eDate 2개 넣으면 연결달력 생성되어 서로의 날짜를 넘어가지 않음
+         * @example   datePickerSet($("#datepicker1"), $("#datepicker2"));
+         */
+        function datePickerSet(sDate, eDate, flag) {
+
+            //시작 ~ 종료 2개 짜리 달력 datepicker	
+            if (!isValidStr(sDate) && !isValidStr(eDate) && sDate.length > 0 && eDate.length > 0) {
+                var sDay = sDate.val();
+                var eDay = eDate.val();
+
+                if (flag && !isValidStr(sDay) && !isValidStr(eDay)) { //처음 입력 날짜 설정, update...			
+                    var sdp = sDate.datepicker().data("datepicker");
+                    sdp.selectDate(new Date(sDay.replace(/-/g, "/"))); //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+
+                    var edp = eDate.datepicker().data("datepicker");
+                    edp.selectDate(new Date(eDay.replace(/-/g, "/"))); //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+                }
+
+                //시작일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+                if (!isValidStr(eDay)) {
+                    sDate.datepicker({
+                        maxDate: new Date(eDay.replace(/-/g, "/"))
+                    });
+                }
+                sDate.datepicker({
+                    language: 'ko',
+                    autoClose: true,
+                    onSelect: function() {
+                        datePickerSet(sDate, eDate);
+                    }
+                });
+
+                //종료일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+                if (!isValidStr(sDay)) {
+                    eDate.datepicker({
+                        minDate: new Date(sDay.replace(/-/g, "/"))
+                    });
+                }
+                eDate.datepicker({
+                    language: 'ko',
+                    autoClose: true,
+                    onSelect: function() {
+                        datePickerSet(sDate, eDate);
+                    }
+                });
+
+                //한개짜리 달력 datepicker
+            } else if (!isValidStr(sDate)) {
+                var sDay = sDate.val();
+                if (flag && !isValidStr(sDay)) { //처음 입력 날짜 설정, update...			
+                    var sdp = sDate.datepicker().data("datepicker");
+                    sdp.selectDate(new Date(sDay.replace(/-/g, "/"))); //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+                }
+
+                sDate.datepicker({
+                    language: 'ko',
+                    autoClose: true
+                });
+            }
+
+
+            function isValidStr(str) {
+                if (str == null || str == undefined || str == "")
+                    return true;
+                else
+                    return false;
+            }
+        }
+    </script>
+    <!-----------------날짜선택End----------->
+    <script src=js/modal.js> /*modal.js */ </script> </body>
+
+</html>

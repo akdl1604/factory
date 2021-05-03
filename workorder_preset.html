@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="home.html"><img src="img/logo.png"></a></h1>
+            <b>공정 Preset 설정</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html" class="sel_">
+                            <img src="img/icon_report_.png">작업지시서<img src="img/ico_arrow_.png" class="arrow">
+                        </a>
+                        <ul style="display: block;">
+                            <li><a href="workorder_plan.html">- 생산 계획 현황</a></li>
+                            <li><a href="workorder.html">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html" class="sel">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html">
+                            <img src="img/icon_chart.png">생산현황,이력<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="project_job.html">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box">
+                    <div class="ctn_box_inner">
+                        <div class="table_head">
+                            <b>· Preset 설정</b>
+                            <ul>
+                                <li>· 검 색</li>
+                                <li>
+                                    <input type="text" id="SETTING_PRESET_NAME">
+                                    <button class="btn_search" onclick="Search_Preset()"></button>
+                                </li>
+                                <li><a href="#" class="btn_refresh" onclick="Refresh_Preset()"></a></li>
+                            </ul>
+                        </div>
+
+
+
+                        <!-----------------Table start---------------->
+                        <!-----------------Table start---------------->
+                        <!-----------------Table start---------------->
+                        <div class="tb_overflow-x pset">
+                        <div class="fixed-table-container">
+                            <div class="fixed-table-header-bg"></div>
+                            <div class="fixed-table-wrapper">
+                                <table class="fixed-table" id="preset_table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 3%;">
+                                                <div><input type="checkbox" id="checkAll"></div>
+                                            </th>
+                                            <th style="width: 26%;">
+                                                <div>명칭</div>
+                                            </th>
+                                            <th style="width: 15%;">
+                                                <div>구분</div>
+                                            </th>
+                                            <th style="width: 12%;">
+                                                <div>관리자</div>
+                                            </th>
+                                            <th style="width: 44%;">
+                                                <div>공정흐름</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="workorder_preset_tbody">
+                                         
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                            </div>
+                        <!-------------------Table End------------------>
+                        <!-------------------button Starts------------------>
+                        <div class="btn_list">
+                            <div class="btn_left">
+                                <a href="#" class="btn_bs blue" onclick="Copy_Preset()">복사</a>
+                            </div>
+                            <div class="btn_right" style="margin-top: 0;">
+                                <a href="#" onclick="Del_Preset()" class="btn_bs">삭제</a>
+                                <button
+                                    onclick="window.open('pop/tab_preset.html', 'BOM 선택', 'left='+(screen.availWidth-950)/2+',top='+(screen.availHeight-760)/2+', width=950px,height=760px');"
+                                    name="" class="btn_bs blue">생성</button>
+                            </div>
+                        </div>
+                        <!-------------------button End------------------>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/Basic/common.js"></script>
+    <script src="js/ProcessManage/workorder_preset.js"></script>
+</body>
+
+</html>

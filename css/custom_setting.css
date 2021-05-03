@@ -1,0 +1,22 @@
+.on{
+    background-color: #eeedfb;
+}
+
+.on td{
+    background-color: #eeedfb;
+}
+
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+
+.input:focus {
+  animation-name: border-focus;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}

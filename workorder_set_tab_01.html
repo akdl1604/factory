@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+
+    <link rel="stylesheet" href="css/custom_setting.css">
+</head>
+
+<body>
+    <div class="ctn_box_inner" style="margin: 0;">
+        <table width="100%" class="fair">
+            <colgroup>
+                <!----'20210304 변경'---->
+                <col width="350px">
+                <col width="*">
+            </colgroup>
+            <tr>
+                <td class="work_set_left_fix">
+                    <!----table구조변경/class명추가---->
+
+                    <div class="work_set_left">
+                        <div class="setting_title">
+                            <!--20210305 title명삭제-->
+                            <ul class="setting_title_right">
+                                <li>
+                                    <input type="text" id="process_name" style="width: 100px;">
+                                    <button class="btn_search" id="search_process_name"></button>
+                                </li>
+                                <li>
+                                    <!------fair_add팝업추가--------->
+                                    <a id="OutcheckSelect_bt" href="#" name="공정추가" class="btn_pluse"></a>
+                                    <!--                                    <a href="pop/fair_add.html" class="btn_pluse" id="process_insert"></a>-->
+                                </li>
+                                <li>
+                                    <!------20210305 공정수정추가--------->
+                                    <a id="UpdateProcess" href="#" name="공정수정" class="btn_revise"></a>
+                                </li>
+                                <li><a id="DeleteProcess" href="#" class="btn_minus" id="process_delete"></a></li>
+                            </ul>
+                        </div>
+                        <div class="fixed-table-container wrdset">
+                            <div class="fixed-table-header-bg"></div>
+                            <div class="fixed-table-wrapper">
+                                <table class="fixed-table" id="process_register_table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 30%;">
+                                                <div>대분류</div>
+                                            </th>
+                                            <th style="width: 40%;">
+                                                <div>명칭</div>
+                                            </th>
+                                            <th style="width: 30%;">
+                                                <div>코드</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <!-- 공정 전체 조회 Table Tbody-->
+                                    <tbody style="border-bottom: 1px solid #DDD" id="process_register_tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="outcheckbox">
+
+                            <ul class="outcheck pp">
+                                <li>
+                                    <label><input id="OutcheckSelect" type="checkbox" disabled><span>외주</span></label>
+                                </li>
+
+                                <li><input id="DisabledNo" type="text" style="display: none;"></li>
+                                <li><input id="DisabledValue" type="text" disabled style="width: 187px"></li>
+                                <!--
+                                <li><a id="OutcheckSelect_bt" href="#" class="btn_grey"
+                                        onclick="window.open('pop/customer_add.html', 'BOM 선택', 'left='+(screen.availWidth-470)/2+',top='+(screen.availHeight-450)/2+', width=470px,height=450px');"
+                                        name="납품처선택" disabled="disabled">선택</a></li>
+-->
+                            </ul>
+
+                        </div>
+                    </div>
+                </td>
+
+                <td class="work_set_right">
+                    <!----'20210304 table 구조변경 class명추가'-->
+                    <table style="width: 100%; border: 0;">
+                        <tr>
+                            <td class="equiptd">
+                                <div>
+                                    <div class="setting_title">
+                                        <b>· 작업내용 및 특이사항</b>
+                                        <ul class="setting_title_right">
+                                            <li><a href="#" class="btn_pluse" id="TaskContentsInsert"></a></li>
+                                            <li><a href="#" class="btn_minus" id="TaskContentsDelete"></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="fixed-table-container set_equip">
+                                        <!--style삭제 20210316-->
+                                        <div class="fixed-table-header-bg"></div>
+                                        <div class="fixed-table-wrapper">
+                                            <table class="fixed-table setth" id="table_equipment_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 100%;">
+                                                            <div>내용</div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="TaskContentsTable"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="equiptd">
+                                <div>
+                                    <div class="setting_title">
+                                        <b>· 설비</b>
+                                        <ul class="setting_title_right">
+
+                                            <li>
+                                                <input type="text" id="equipment_name" style="width: 140px;">
+                                                <button class="btn_search" id="search_equipment_name"></button>
+                                            </li>
+                                            <li><a href="#" class="btn_pluse" id="equipment_insert"></a></li>
+                                            <li><a href="#" class="btn_minus" id="equipment_delete"></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="fixed-table-container set_equip scd">
+                                        <!--class명추가 style삭제 20210316-->
+                                        <div class="fixed-table-header-bg"></div>
+                                        <div class="fixed-table-wrapper">
+                                            <table class="fixed-table setth results" id="table_facilities_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 33%;">
+                                                            <div>내용</div>
+                                                        </th>
+                                                        <th style="width: 33%;">
+                                                            <div>모델</div>
+                                                        </th>
+                                                        <th style="width: 34%;">
+                                                            <div>제조사</div>
+                                                        </th>
+                                                    </tr>
+                                                    <tr class="warning no-result">
+                                                        <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="FacilitiesTable"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: bottom;">
+                                <div>
+                                    <div class="setting_title">
+                                        <b>· 자주검사</b>
+
+                                        <!---'20210304 추가'--->
+                                        <a href="#" class="btn">
+                                            <label><input id="SelfInspectionCheck" name="check"
+                                                    type="checkbox"><span>항목없음</span></label>
+                                        </a>
+                                        <!-- Modal start -->
+                                        <div class="modal">
+                                            <div class="modal-content">
+                                                <div>
+                                                    <div class="pop_head">
+                                                        <span class="close">&times;</span>
+                                                        알림
+                                                    </div>
+                                                    <div class="pop_content">
+                                                        '항목 없음'체크 시, 기존 설정한 자주검사항목이 삭제됩니다.
+                                                        <div class="pop_btn_list">
+                                                            <a id="CheckDelete" href="#" class="btn_bs">삭제</a>
+                                                            <a id="CheckCancle" href="#" class="btn_bs blue">취소</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal end-->
+
+
+                                        <ul class="setting_title_right">
+                                            <li><a id="SelfInspectionAdd" class="btn_pluse"></a></li>
+                                            <li><a id="SelfInspectionUpdate" class="btn_revise"></a></li>
+                                            <li><a id="SelfInspectionDelete" href="#" class="btn_minus"></a></li>
+                                        </ul>
+                                    </div>
+                                    <table class="fair_fo">
+                                        <tr>
+                                            <td>
+                                                <div class="checklist">
+                                                    <table>
+                                                        <colgroup>
+                                                            <col width="160px">
+                                                            <col width="*">
+                                                        </colgroup>
+                                                        <tbody id="SelfInspectionList"></tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 자식 페이지에서 주는 값 받기-->
+        <!-- 검사 항목 -->
+        <input id="PTitleName" style="display: none;">
+        <!-- 구분 -->
+        <input id="PSelectComboBox" style="display: none;">
+        <!-- 옵션1 -->
+        <input id="PMeasurementsSelect" style="display: none;">
+        <!-- 입력 -->
+        <input id="value" style="display: none;">
+        <!-- 문장 옵션1 -->
+        <input id="PselectItem" style="display: none;">
+        <!-- 측정값 옵션_2 -->
+        <input id="OptionCount1" style="display: none;">
+        <!-- 항목체크 옵션_2 -->
+        <input id="OptionCount2" style="display: none;">
+
+        <!-------------------button Starts------------------>
+        <div class="btn_list">
+            <div class="btn_right wset" style="">
+                <!--20210304수정--->
+                <a href="#" id="process_save" class="btn_bs blue">저장</a>
+            </div>
+        </div>
+        <!-------------------button End------------------>
+    </div>
+    <!-- <script src="js/modal.js"></script> -->
+    <!--20210304추가--->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- <script src="js/ProcessManage/workorder_setting.js"></script> -->
+    <script src="js/Basic/common.js"></script>
+    <script src="js/ProcessManage/workorder_setting_tab1.js"></script>
+</body>
+
+</html>

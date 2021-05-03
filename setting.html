@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space Solution</title>
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+
+    <link rel="stylesheet" href="css/custom_setting.css">
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="main.html"><img src="img/logo.png"></a></h1>
+            <b>설정</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+                <input type="hidden" id ="ORIGIN_ACCOUNT_DIVISION_ID" value=2>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html">
+                            <img src="img/icon_report.png">작업지시서<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="workorder_plan.html">- 생산 계획 현황</a></li>
+                            <li><a href="workorder.html">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html">
+                            <img src="img/icon_chart.png">생산현황,이력<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="project_job.html">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box sett">
+                    <div class="ctn_box_inner">
+                        <div class="main_top wo">
+                            <b>작업자 정보</b>
+                            <div class="order_list">
+                                <ul>
+                                    <li>
+                                        <a onclick="window.open('pop/setting_add.html', '', 'left='+(screen.availWidth-445)/2+',top='+(screen.availHeight-590)/2+', width=445px,height=590px');" name="" style="cursor: pointer;"><img src="img/ico_self_add.png">추가</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn"><img src="img/ico_self_del.png">제거</a>
+                                        <div id="WorkerModal" class="modal">
+                                            <!-- modal start -->
+                                            <div class="modal-content">
+                                                <div>
+                                                    <div class="pop_head">
+                                                        <span class="close">&times;</span>
+                                                        알림
+                                                    </div>
+                                                    <div class="pop_content">
+                                                        선택한 작업자 정보를 삭제하시겠습니까?
+                                                        <div class="pop_btn_list">
+                                                            <a id="WorkerDelete" href="#" class="btn_bs">예</a>
+                                                            <a id="WorkerNo" href="#" class="btn_bs blue">아니오</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Modal end-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-----------------Table start---------------->
+                        <div class="fixed-table-container" style="height:calc(40vh - 100px);">
+                            <div class="fixed-table-header-bg"></div>
+                            <div class="fixed-table-wrapper">
+                                <table  id="WorkerTable" class="fixed-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 4%;">
+                                                <div>No.</div>
+                                            </th>
+                                            <th style="width: 31%;">
+                                                <div>사번</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>성명</div>
+                                            </th>
+                                            <th style="width: 15%;">
+                                                <div>소속</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>직급</div>
+                                            </th>
+                                            <th style="width: 15%;">
+                                                <div>주민등록번호</div>
+                                            </th>
+                                            <th style="width: 15%;">
+                                                <div>비밀번호</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="WorkerList"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-------Table End-------->
+
+                        <div class="main_top wo" style="margin-top: 30px;">
+                            <b>관리자 정보</b>
+                            <div class="order_list">
+                                <ul>
+                                    <li>
+                                        <a onclick="window.open('pop/setting_admin_add.html', '', 'left='+(screen.availWidth-445)/2+',top='+(screen.availHeight-590)/2+', width=445px,height=590px');" name="" style="cursor: pointer;"><img src="img/ico_self_add.png">추가</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn"><img src="img/ico_self_del.png">제거</a>
+                                        <div id = "AdminModal" class="modal">
+                                            <!-- modal start -->
+                                            <div class="modal-content">
+                                                <div>
+                                                    <div class="pop_head">
+                                                        <span class="close">&times;</span>
+                                                        알림
+                                                    </div>
+                                                    <div class="pop_content">
+                                                        선택한 관리자 정보를 삭제하시겠습니까?
+                                                        <div class="pop_btn_list">
+                                                            <a id = "AdminDelete" href="#" class="btn_bs">예</a>
+                                                            <a id = "AdminNo" href="#" class="btn_bs blue">아니오</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Modal end-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-----------------Table start---------------->
+                        <div class="fixed-table-container" style="height:calc(40vh - 100px);">
+                            <div class="fixed-table-header-bg"></div>
+                            <div class="fixed-table-wrapper">
+                                <table id="AdminTable" class="fixed-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 4%;">
+                                                <div>No.</div>
+                                            </th>
+                                            <th style="width: 31%;">
+                                                <div>사번</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>성명</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>소속</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>직급</div>
+                                            </th>
+                                            <th style="width: 15%;">
+                                                <div>주민등록번호</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>비밀번호</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>권한</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="AdminList"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-------Table End-------->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="js/modal.js"></script> 
+    <script src="js/Basic/common.js"></script> 
+    <script src="js/Setting/setting.js"></script>
+</body>
+</html>

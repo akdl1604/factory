@@ -1,0 +1,217 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1.BOM</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/web.css">
+    <link rel="stylesheet" href="../css/tabs.css">
+    <link rel="stylesheet" href="../css/modal.css">
+</head>
+
+<body>
+    <div class="wod">
+        <div class="wod_top">
+            <select>
+                <option value="2.workorder.html">작업지시서 서식1</option>
+                <option value="2.workorder_02.html">작업지시서 서식2</option>
+                <option value="2.workorder_03.html">작업지시서 서식3</option>
+            </select>
+            <div class="pop_top_radio">
+                <label><input type="checkbox" name="checkbox"><span>긴급</span></label>
+                <label><input type="checkbox" name="checkbox"><span>우선</span></label>
+            </div>
+            <div class="pop_top_preset">
+                <span>공정</span>
+                <button
+                    onclick="window.open('preset_list.html', 'BOM 선택', 'left='+(screen.availWidth-1000)/2+',top='+(screen.availHeight-480)/2+', width=1000px,height=480px');"
+                    name="print" class="btn_pop">Preset불러오기</button>
+                <button
+                    onclick="window.open('self_setting.html', 'BOM 선택', 'left='+(screen.availWidth-950)/2+',top='+(screen.availHeight-640)/2+', width=950px,height=640px');"
+                    name="print" class="btn_pop">직접설정</button>
+            </div>
+        </div>
+        <div class="table_list pop">
+            <!-----------table Start--------------------->
+
+            <div class="table_height pop">
+                <table>
+                    <colgroup>
+                        <col width="120px">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                        <col width="">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th colspan="11" style="text-align: left; padding-left: 20px;">공정검사코드</th>
+                        </tr>
+                        <tr>
+                            <td><button
+                                    onclick="window.open('customer_add.html', 'BOM 선택', 'left='+(screen.availWidth-390)/2+',top='+(screen.availHeight-400)/2+', width=390px,height=400px');"
+                                    name="납품처선택" class="btn_pop">M</button></td>
+                            <td>공정작업자</td>
+                            <td colspan="2">I</td>
+                            <td>품질검사원</td>
+                            <td colspan="2">C</td>
+                            <td colspan="2">고객검사</td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>공정명/공정번호</th>
+                            <th>자재담당자</th>
+                            <th colspan="2">불출일(년,월,일)</th>
+                            <th colspan="2">자재사이즈</th>
+                            <th>성적서No.</th>
+                            <th>재질</th>
+                            <th>불출수량</th>
+                            <th>CODE</th>
+                            <th>검사자확인</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="fb">원자재불출<br>[공정번호:B010]</td>
+                            <td colspan="10" class="fb">*자재담당자는 도면에 명시된 재질 및 규격을 확인하시고 불출하시오.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>//</td>
+                            <td colspan="2"></td>
+                            <td colspan="2"></td>
+                            <td></td>
+                            <td></td>
+                            <td>M</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>REMARK</td>
+                            <td></td>
+                            <td>//</td>
+                            <td colspan="2"></td>
+                            <td colspan="2"></td>
+                            <td></td>
+                            <td></td>
+                            <td>M</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>공정명/공정번호</th>
+                            <th>작업자</th>
+                            <th>작업일(년,월,일)</th>
+                            <th>작업수량</th>
+                            <th>불량코드</th>
+                            <th>불량수량</th>
+                            <th>양품수량</th>
+                            <th>재고수량</th>
+                            <th>작업시간</th>
+                            <th>CODE</th>
+                            <th>CODE검사확인</th>
+                        </tr>
+                        <tr class="fb">
+                            <td rowspan="2">[공정번호: ]</td>
+                            <td colspan="10"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>REMARK</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="fb">
+                            <td rowspan="2">[공정번호: ]</td>
+                            <td colspan="10"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>REMARK</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="fb">
+                            <td rowspan="2">[공정번호: ]</td>
+                            <td colspan="10"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>REMARK</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/CreateDepoly/pop_workorder_pop.js"></script>
+</html>

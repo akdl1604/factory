@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space Solution</title>
+    <link rel="stylesheet" type="text/css" href="../css/web.css" />
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+
+</head>
+
+
+<body>
+    <div class="pop setad">
+        <p>비밀번호 찾기<a href="#" class="btn_close" onclick="ClosePopup();"></a></p>
+
+        <div class="pop_margin">
+            <table width="100%">
+                <colgroup>
+                   <col width="140px">
+                    <col width="">
+                </colgroup>
+                <tr>
+                    <th>· 사번</th>
+                    <td><input id="ORIGIN_ACCOUNT_EMPLOYEENUMBER" type="text"></td>
+                </tr>
+                <tr>
+                    <th>· 주민등록번호</th>
+                    <td><input type="text" name="ORIGIN_ACCOUNT_RESIDENTNUMBER" id="ORIGIN_ACCOUNT_RESIDENTNUMBER" placeholder="예:123123-1234567" maxlength="14"></td>
+                </tr>
+            </table>
+            <p id="passwordword" class="pw_txt" style="display: none;"></p>
+            <div class="btn_list">
+                <a href="#" class="btn btn_bs blue" onclick="PwSearch();">찾기</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/Basic/common.js"></script>
+    <script src="../js/Home/login_pw_pop.js"></script>
+</body>
+</html>

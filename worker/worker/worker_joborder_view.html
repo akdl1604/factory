@@ -1,0 +1,303 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>작업지시서</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/web.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/workorder_customer.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <link rel="stylesheet" href="css/web.css" media="screen and (max-height:1980px)">
+
+    <link rel="stylesheet" href="css/datepicker.min.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/i18n/datepicker.ko.js"></script> 
+</head>
+
+<body>
+    <div class="wod">
+        <div class="order_form pop">
+            <div>
+                <ul>
+                    <li><img src="../../img/ico_qr.png"></li>
+                    <li><a href="#"><img src="../../img/btn_plan.png" onclick="showPopup()" value="팝업창 호출"><span>도면보기</span></a></li>
+                    <li><a href="#"><img src="../../img/btn_asb.png"><span>조립절차</span></a></li>
+                </ul>
+                <h8 align="center">작업지시서</h8>
+            </div>
+        <div class="order_form">
+            <table class="txtct">
+                <colgroup>
+                    <col width="12%">
+
+                    <col width="12%">
+                    <col width="12%">
+                    <col width="12%">
+
+                    <col width="6%">
+                    <col width="6%">
+            
+                    <col width="8%">
+                    <col width="8%">
+
+                    <col width="2%">
+                    <col width="2%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="2%">
+                    <col width="2%">
+                    
+                    <!-- <col width=""> -->
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th colspan="3">수주내용</th>
+                        <th colspan="10">Bellows 제 작 사 양</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>사업명</th>
+                        <td colspan="3"><input type="text" id="JobOrder_Business_Name" maxlength="20" size="40"></inpiut>
+                        </td>
+                        <th colspan="2">금형 관리번호</th>
+                        <td colspan="1">금형 : </td>
+                        <td colspan="1" id="JobOrder_MOLDTYPE"></td>
+                        <td colspan="6" id="JobOrder_MOLDNUMBER"></td>
+
+                    </tr>
+
+                    <tr>
+                        <th>벨로우즈 코드</th>
+                        <td colspan="3"><input type="text" id="JobOrder_BELLOWSCODE" maxlength="20" size="40"></td>
+                        <th colspan="2">금형 사이즈</th>
+                        <td colspan="2">OD:</td>
+                        <td colspan="2" id="JobOrder_OD"></td>
+                        <td colspan="2">ID:</td>
+                        <td colspan="2" id="JobOrder_C_ID"></td>
+                    </tr>
+
+                    <tr>
+                        <th>품명</th>
+                        <td colspan="3"><input type="text" id="JobOrder_Product_Name" maxlength="20" size="40"></td>
+                        <th rowspan="2" colspan="1">원소재 사양</th>
+                        <th colspan="1"> 자재 Code</th>
+                        <td colspan="8" id="JobOrder_MATERIALCODE"> </td>
+                    </tr>
+
+                    <tr>
+                        <th>수량</th>
+                        <td colspan="3"><input type="text" id ="JobOrder_QUANTITY" maxlength="20" size="40"></td>
+                        <th >Size</th>
+                        <td colspan="2">소재:</td>
+                        <td colspan="2" id="JobOrder_MATERIAL"></td>
+                        <td colspan="2">두께 Inch:</td>
+                        <td colspan="2" id="JobOrder_MATERIALTHICK"></td>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="2">납품처(고객명)</th>
+                        <td rowspan="2"><button
+                            onclick="window.open('../customer_add.html?arg1=' + 2, 'BOM 선택', 'left='+(screen.availWidth-500)/2+',top='+(screen.availHeight-500)/2+', width=500px,height=500px');"
+                            name="납품처선택" class="customer_add">M</button><br><br>
+
+                        <label id="JobOrder_Work_CompanyName"></label>
+                        <input type="hidden" id ="JobOrder_Work_CompanyNumber">
+                        <input type="hidden" id ="JobOrder_Work_CompanyNo">
+                    </td>
+                   
+                            
+                        <th>납기</th>
+                        <td> <input type="text" id="JobOrder_Delivery_Day" maxlength="10" size="15"></td>
+
+                        <th rowspan="2" colspan="2">Rubber Container</th>
+                        <td rowspan="2" colspan="2">사이즈:</td>
+                        <td rowspan="2" colspan="2"><input type="text" id ="JobOrder_SIZE" maxlength="20" size="20"></td>
+                        <td rowspan="2" colspan="2">샤링폭:</td>
+                        <td rowspan="2" colspan="2"><input type="text" id ="JobOrder_SHEARINGWIDTH" maxlength="20" size="20"></td>
+
+                    </tr>
+                    <tr>
+                        <th> 계획 종료일</th>
+                        <td> <input type="text" id="JobOrder_Plan_Day" maxlength="10" size="15"></td>
+                    </tr>
+
+                    <tr>
+                        <th> 작업지시번호</th>
+                        <td colspan="3"><input type="text" id="JobOrder_Number" maxlength="20" size="40"></td>
+
+                        <th colspan="2">프레스 수량</th>
+                        <td colspan="2">MD:</td>
+                        <td colspan="2"> <input type="text" id ="JobOrder_MD" maxlength="20" size="20"></td>
+                        <td colspan="2">FD:</td>
+                        <td colspan="2"> <input type="text" id ="JobOrder_FD" maxlength="20" size="20"></td>
+
+                    </tr>
+
+                    <tr>
+                        <th> 품번</th>
+                        <td colspan="3"><input type="text" id="JobOrder_Product_Number" maxlength="20" size="40"> </td>
+
+                        <th colspan="2">Weldring 직경</th>
+                        <td colspan="2" id="JobOrder_WD"></td>
+                        <th colspan="2">프레스</th>
+                        <td colspan="1"><input type="text" id="JobOrder_PRESSNUMBER" maxlength="20" size="5"></td>
+                        <td colspan="1">호기</td>
+                        <td colspan="1"><input type="text" id="JobOrder_PRESSTON" maxlength="20" size="5"></td>
+                        <td colspan="1">톤</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <table  style="margin-top: 8px;">
+                <tbody>
+                <colgroup>
+                    <col width="11%">
+                    <col width="15%">
+                </colgroup>
+                               
+                <tr>
+                    <th>CV 수 미정</th>
+                    <td>
+                        <select id="JobOrder_CV_Number">
+                            <option>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                        </select>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>
+                                <span>1</span>CV=10용접 <img src="../../img/ico_order_form_arrow.png">
+                            </li>
+                            <li>
+                                <span>2</span>기술팀 검토 후 CV결정 <img src="../../img/ico_order_form_arrow.png">
+                            </li>
+                            <li>
+                                <span>3</span>제작진행
+                            </li>
+                        </ul>
+                    </td>
+                    <td>재사용</td>
+
+                    <td class="sel_check">
+                        <button class="sel yeobu">여<span></span></button>,
+                        <button class="yeobu">부<span></span></button>
+                    </td>
+                    
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="btn_list">
+        <div class="btn_left pop">
+            <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_save_btn();">저장</a>
+        </div>
+        <div class="btn_right pop">
+            <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_pre_btn();">이전</a>
+            <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_next_btn();">다음</a>
+
+        </div>
+        <!-- modal start추가팝업 -->
+        <input type="hidden" class="btn" />
+        <div class="modal">
+            <div class="modal-content">
+                <div>
+                    <div class="pop_head">
+                        <span class="close">&times;</span>
+                        알림
+                    </div>
+                    <div class="pop_content">
+                        작업지시서 서식이 완성되지 않았습니다. 확인 후 다시 시도하시기 바랍니다.
+                        <div class="pop_btn_list">
+                            <a href="#" onclick="modal_delete_ok(1);" class="btn_bs blue">확인</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- Modal end -->
+
+        <!-- modal start추가팝업 -->
+        <input type="hidden" class="btn" />
+        <div class="modal">
+            <div class="modal-content">
+                <div>
+                    <div class="pop_head">
+                        <span class="close">&times;</span>
+                        알림
+                    </div>
+                    <div class="pop_content">
+                        저장 후 다시 시도하시기 바랍니다.
+                        <div class="pop_btn_list">
+                            <a href="#" onclick="modal_delete_ok(2);" class="btn_bs blue">확인</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- Modal end -->
+
+        <!-- modal start추가팝업 -->
+        <input type="hidden" class="btn" />
+        <div class="modal">
+            <div class="modal-content">
+                <div>
+                    <div class="pop_head">
+                        <span class="close">&times;</span>
+                        알림
+                    </div>
+                    <div class="pop_content">
+                        저장하지 않은 정보는 모두 사라집니다. 이전단계로 진행하시겠습니까?
+                        <div class="pop_btn_list">
+                            <a href="#" onclick="modal_delete_ok(3);" class="btn_bs">예</a>
+                            <a href="#" onclick="modal_delete_cancle(3);" class="btn_bs blue">아니오</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- Modal end -->
+
+         <!-- modal start추가팝업 -->
+         <input type="hidden" class="btn" />
+         <div class="modal">
+             <div class="modal-content">
+                 <div>
+                     <div class="pop_head">
+                         <span class="close">&times;</span>
+                         알림
+                     </div>
+                     <div class="pop_content">
+                         작업지시서 저장 완료
+                         <div class="pop_btn_list">
+                             <a href="#" onclick="modal_delete_ok(4);" class="btn_bs blue">확인</a>
+                         </div>
+                     </div>
+ 
+                 </div>
+             </div>
+        </div><!-- Modal end -->
+
+    </div>
+
+    
+</body>
+
+<script src="js/modal.js"> /*modal.js */</script>
+<script src="js/Basic/common.js"></script>
+<script src="js/worker_joborder_view.js"></script>
+
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>form_examine</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/web.css">
+    <link rel="stylesheet" href="../css/tabs.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+</head>
+
+<body>
+
+     <!-- 수입검사 서식 start-->
+    <table>
+        <tr>
+            <th colspan="2">공정명/공정번호</th>
+            <th colspan="1">계획종료일</th>
+            <th colspan="1">작업자</th>
+            <th colspan="2">작업일</th>
+            <th colspan="1">작업수량</th>
+            <th colspan="1">불량코드</th>
+            <th colspan="1">불량수량</th>
+            <th colspan="1">양품수량</th>
+            <th colspan="3">기타사항</th>
+            <th colspan="1">CODE</th>
+            <th colspan="3">공정확인자</th>
+        </tr>
+        <tr>
+            <td colspan="2" class="align_left" id="process_number">&nbsp;수입검사</br>[공정번호 :___]</td>
+
+            <td colspan="1">(관리자)</td>
+
+            <td colspan="1">(자동입력)</td>
+
+            <td colspan="2">(자동입력)</td> 
+            <td colspan="1"><input type="text" maxlength="15"></td>
+            <td colspan="1"><input type="text" maxlength="15"></td>
+            <td colspan="1">목록에서 선택해야함</td>
+            <td colspan="1"><input type="text" maxlength="15"></td>
+            <td colspan="3"> 합 <input type="checkbox" name="checkbox" onclick="checkOnlyOne(this);"> 불 <input type="checkbox" name="checkbox" onclick="checkOnlyOne(this);"></td>
+        
+            <td colspan="1" rowspan="2">불량코드 목록에서 선택</td>
+            <td colspan="3" rowspan="2"> 계정에 등록된 서명 또는 도장 이미지 입력</td>
+        </tr>
+
+        <tr>
+            <td colspan="1" class="align_center">작업내용 및</br>특이사항</td>
+
+            <td colspan="11"><textarea name="Text1" cols="120" rows="3" style="resize: none;"></textarea></td>
+
+        </tr>
+        </table>
+
+        <!-- 수입검사 서식 end-->
+</body>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/form.js"></script>
+</html>

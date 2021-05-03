@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>작업자추가</title>
+    <link rel="stylesheet" type="text/css" href="../css/web.css" />
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+
+    <script src="../js/jquery-3.1.1.min.js"></script>
+</head>
+
+
+<body>
+    <div class="pop setad">
+        <p>작업자 정보 추가 <a href="#" class="btn_close" onclick="ClosePopup();"></a></p>
+
+        <div class="pop_margin">
+            <table width="100%">
+                <colgroup>
+                   <col width="140px">
+                    <col width="">
+                </colgroup>
+                <tr>
+                    <th>· 성명</th>
+                    <td><input id="ORIGIN_ACCOUNT_MEMBERNAME" type="text"></td>
+                </tr>
+                <tr>
+                    <th>· 사번</th>
+                    <td><input id="ORIGIN_ACCOUNT_EMPLOYEENUMBER" type="text"></td>
+                </tr>
+                <tr>
+                    <th>· 소속</th>
+                    <td>
+                        <select id="ORIGIN_ACCOUNT_DEPARTMENT">
+                            <option>생산기술 1팀</option>
+                            <option>생산기술 2팀</option>
+                            <option>생산기술 3팀</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>· 직급</th>
+                    <td>
+                        <select id="ORIGIN_ACCOUNT_TIER">
+                            <option>대리</option>
+                            <option>과장</option>
+                            <option>팀장</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>· 주민등록번호</th>
+                    <td><input id="ORIGIN_ACCOUNT_RESIDENTNUMBER" type="text"></td>
+                </tr>
+                <tr>
+                    <th>· 비밀번호</th>
+                    <td><input id="ORIGIN_ACCOUNT_PASSWORD" type="password"></td>
+                </tr>
+                <tr>
+                    <th>· 할당 변경 권한</th>
+                    <td><input id="ORIGIN_ACCOUNT_DIVISION_ID" type="checkbox"></td>
+                </tr>
+                <tr>
+                    <th>· 전자인장</th>
+                    <td  class="ex_file">
+                       <ul>
+                           <li>
+                                <div id="image_container">
+                                    <span id="ShowImg">미리보기</span>
+                                </div>
+                           </li>
+                           <li>
+                               <div class="filebox add">
+                                   <label for="FileImg">등록</label>
+                                   <input id="FileImg" type="file" accept="image/*" onchange="setThumbnail(event);"/>
+                               </div>
+                               <a href="#" class="btn_bs sml" onclick="ImgDelete();">삭제</a>
+                           </li>
+                       </ul>
+                        <p>최대사이즈 000*000px, 000KB 미만</p>
+                    </td>
+                </tr>
+            </table>
+            <div class="btn_list">
+                <a id="save" href="#" class="btn btn_bs blue">저장</a>
+                <div id="SettingAddModal" class="modal"> <!-- modal start -->
+                    <div class="modal-content">
+                        <div>
+                            <div class="pop_head">
+                                <span id="CloseBt" class="close">&times;</span>
+                                알림
+                            </div>
+                            <div class="pop_content">
+                                작업자 정보를 모두 입력 후 다시 시도하시기 바랍니다.
+                                <div class="pop_btn_list">
+                                    <a id="CheckBt" href="#" class="btn_bs">확인</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Modal end-->
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/Basic/common.js"></script>
+    <script src="../js/Setting/setting_add_pop.js"></script>
+</body>
+</html>

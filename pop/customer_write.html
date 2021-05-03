@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>거래처 추가</title>
+    <link rel="stylesheet" type="text/css" href="../css/web.css" />
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+</head>
+
+
+<body>
+    <div class="pop setad">
+        <p>거래처 추가<a href="#" class="btn_close" onclick="ClosePopup();"></a></p>
+
+        <div class="pop_margin">
+            <table width="100%">
+                <colgroup>
+                    <col width="40%">
+                    <col width="">
+                </colgroup>
+                <tr>
+                    <th>· 사업자 번호</th>
+                    <td><input id="Pop_CompanyNumber_insert" type="text" style="width: 96%;"></td>
+                </tr>
+                <tr>
+                    <th>· 업체명</th>
+                    <td><input id="Pop_CompanyName_insert" type="text" style="width: 96%;"></td>
+                </tr>
+            </table>
+            <div class="btn_list">
+                <a id="CompanyAdd_Btn" href="#" class="btn btn_bs blue">저장</a>
+            </div>
+        </div>
+    </div>
+    <!-- <script src=../js/modal.js> /*modal.js */</script> -->
+    <script src="../js/Basic/common.js"></script>
+    <script src="../js/AccountManage/customer.js"></script>
+</body>
+
+</html>

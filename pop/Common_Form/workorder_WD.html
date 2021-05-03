@@ -1,0 +1,236 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>작업지시서 용접</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/web.css">
+    <link rel="stylesheet" href="../css/tabs.css">
+</head>
+
+<body>
+    <div class="wod">
+        <div class="wod_top">
+            <select onchange="location.href=this.value">
+                <option value="workorder_BS.html">통합서식</option>
+                <option value="workorder_WB.html">Bellows 제작</option>
+            </select>
+            <div class="pop_top_radio">
+                <label><input type="checkbox" name="checkbox"><span>긴급</span></label>
+                <label><input type="checkbox" name="checkbox"><span>우선</span></label>
+            </div>
+            <div class="pop_top_preset">
+
+
+                <button onclick="window.open('self_modify.html', 'BOM 선택', 'left='+(screen.availWidth-950)/2+',top='+(screen.availHeight-620)/2+', width=950px,height=740px');" name="print" class="btn_pop">공정수정</button>
+            </div>
+        </div>
+        <div class="order_form">
+
+            <h8>작업지시서</h8>
+            <select class="work_sel"  onchange="if(this.value) location.href=(this.value);">
+                <option value="workorder_WD.html">작업지시서 용접</option>
+                <option value="workorder_BS.html">작업지시서 기본</option>
+                <option value="workorder_PD.html">작업지시서 상품</option>
+                <option value="workorder_MF.html">작업지시서 가공</option>
+                <option value="workorder_FM.html">작업지시서 성형</option>
+                <option value="workorder_VV.html">작업지시서 밸브</option>
+            </select>
+            <span class="title_nm">용접</span>
+            
+            <ul class="check">
+                <li>
+                    <div>
+                        <span>작성</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>검토</span>
+
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>승인</span>
+
+                    </div>
+                </li>
+            </ul>
+            <div class="order_form_cnt">
+                <ul>
+                    <li><span>*JOB 발행일자 : 2020년 7월 6일</span></li>
+                    <li><label><input type="checkbox"><span>재고사용</span></label></li>
+                    <li><label><input type="checkbox"><span>사내가공</span></label></li>
+                    <li><label><input type="checkbox"><span>외주가공</span></label></li>
+                    <li><label><input type="checkbox"><span>시제품</span></label></li>
+                    <li><label><input type="checkbox"><span>양산품</span></label></li>
+                    <li><label><input type="checkbox"><span>초도품</span></label></li>
+                    <li><label><input type="checkbox"><span>외주제작</span></label></li>
+                </ul>
+
+                <table class="txtct">
+                    <colgroup>
+                        <col width="10%">
+                        <col width="40%">
+                        <col width="10%">
+                        <col width="40%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>수주내용</th>
+                            <th>항목</th>
+                            <th>수주내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>사업명</th>
+                            <td></td>
+                            <th>품명</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>납품처(고객)</th>
+                            <td></td>
+                            <th>품번/Rev.</th>
+                            <td>/</td>
+                        </tr>
+                        <tr>
+                            <th>작업지시번호</th>
+                            <td></td>
+                            <th>제작수량/납기(종료일)</th>
+                            <td>/</td>
+                        </tr>
+                        <tr>
+                            <th>SSC Part No.</th>
+                            <td></td>
+                            <th>Serial No.</th>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="10">공정코드</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>M</th>
+                            <td>공정작업자</td>
+                            <th>I</th>
+                            <td>품질검사</td>
+                            <th>F</th>
+                            <td>품질최종검사</td>
+                            <th>C</th>
+                            <td>고객사 원천검사</td>
+                            <th>G</th>
+                            <td>정부검사</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <colgroup>
+                        <col width="5%">
+                        <col width="35%">
+                        <col width="30%">
+                        <col width="30%">
+                    </colgroup>
+                    
+                    <tr>
+                        <th rowspan="2">NOTE</th>
+                        <th colspan="3">- 제작 중 발생 하는 특이사항 및 개선요청 사항을 자세하게 기록 할 것 -</th>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td  class="pdno">
+                            <table>
+                              <colgroup>
+                                  <col width="40%">
+                                  <col width="30%">
+                                  <col width="30%">
+                              </colgroup>
+                               <thead>
+                                <tr>
+                                    <th colspan="3">
+                                        품질결함목록
+                                        <p>(Nonconformance Notification)</p>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>부적합보고서번호</th>
+                                        <th>Date</th>
+                                        <th>Insp.Stamp</th>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td class="pdno">
+                            <table>
+                              <colgroup>
+                                  <col width="40%">
+                                  <col width="30%">
+                                  <col width="30%">
+                              </colgroup>
+                               <thead>
+                                <tr>
+                                    <th colspan="3">
+                                        최종 검사 정보
+                                        <p>(Final Inspection Information)</p>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Qty Accepted</th>
+                                        <th>Date</th>
+                                        <th>Insp.Stamp</th>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </table>
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="btn_list">
+        <div class="btn_left pop">
+            <a href="#" class="btn_bs blue" onclick="workorder_03_save_btn();">저장</a>
+        </div>
+        <div class="btn_right pop">
+            <a href="1.bom.html" class="btn_bs blue" onclick="pop_workorder_btn_click('workorder_prev');">이전</a>
+            <a href="#" class="btn_bs blue" onclick="check_save();">다음</a>
+
+        </div>
+    </div>
+</body>
+<script src="../js/CreateDepoly/pop_workorder_pop.js"></script>
+<script src="../js/CreateDepoly/2.workorder_03_pop.js"></script></html>

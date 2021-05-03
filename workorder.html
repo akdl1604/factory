@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    
+    <!--------------------팝업start------------->
+
+
+
+    <!-- ---------------날짜선택Start----------->
+    <link rel="stylesheet" href="css/datepicker.min.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/i18n/datepicker.ko.js"></script>
+    <!-- ---------------날짜선택End----------->
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="main.html"><img src="img/logo.png"></a></h1>
+            <b>생성/배포</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html" class="sel_">
+                            <img src="img/icon_report_.png">작업지시서<img src="img/ico_arrow_.png" class="arrow">
+                        </a>
+                        <ul style="display: block;">
+                            <li><a href="workorder_plan.html">- 생산 계획 현황</a></li>
+                            <li><a href="workorder.html" class="sel">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html">
+                            <img src="img/icon_chart.png">생산현황,이력<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="project_job.html">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box">
+                    <div class="ctn_box_inner">
+                        <div class="search_table">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <colgroup>
+                                    <col width="120px">
+                                    <col width="">
+                                </colgroup>
+                                <tr>
+                                    <th>기간</th>
+                                    <td>
+                                        <div class="sel_day">
+                                            <select id="select_day">
+                                                <option>납기일</option>
+                                                <option>배포일</option>
+                                            </select>
+                                            <input type="text" id="datepicker1">
+                                            &nbsp;~ &nbsp;
+                                            <input type="text" id="datepicker2">
+
+                                            <a href="#" id="today" onclick="date_option(1);"
+                                                class="btn_bs sml non">오늘</a>
+                                            <a href="#" id="week" onclick="date_option(2);"
+                                                class="btn_bs sml non">1주일</a>
+                                            <a href="#" id="1month" onclick="date_option(3);"
+                                                class="btn_bs sml non">1개월</a>
+                                            <a href="#" id="3month" onclick="date_option(4);"
+                                                class="btn_bs sml non">3개월</a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Job 상태</th>
+                                    <td>
+                                        <div class="sel_list">
+                                            <ul>
+                                                <li>
+                                                    <label><input type="checkbox"
+                                                            id="not_distribute"><span>미배포</span></label>
+                                                </li>
+                                                <li>
+                                                    <label><input type="checkbox"
+                                                            id="complete_distribute"><span>배포완료</span></label>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>기타내용</th>
+                                    <td>
+                                        <div class="sel_list">
+                                            <ul>
+                                                <li class="mg"><span>· BOM 품번</span> <input type="text"
+                                                        id="bom_product_number"></li>
+                                                <li class="mg"><span>· 납품처</span> <input type="text" id="product_trade">
+                                                </li>
+                                                <li class="mg"><span>· 완료품목코드</span> <input type="text"
+                                                        id="complete_product_code"></li>
+                                                <li class="mg"><span>· JOB NO.</span> <input type="text"
+                                                        id="job_number"></li>
+                                                <li class="mg"><span>· Bellow Code </span><input type="text"
+                                                        id="bellow_code"></li>
+                                                <li class="mg"><span>· 구분</span> <input type="text" id="sortation"></li>
+                                            </ul>
+
+                                            <ul>
+
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <!--------------------- Table End-->
+                        <div class="btn_list">
+                            <a href="#" id="search_init" onclick="search_init();" class="btn_bs long non">조건 초기화</a>
+                            <a href="#" class="btn_bs long search" onclick="search_();">검색</a>
+                            <!-- modal start -->
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <div>
+                                        <div class="pop_head">
+                                            <span class="close">&times;</span>
+                                            알림
+                                        </div>
+                                        <div class="pop_content">
+                                            해당하는 검색 결과가 없습니다.
+                                            <div class="pop_btn_list">
+                                                <a href="#" class="btn_bs blue">확인</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal end-->
+                        </div>
+
+                        <!-----------------Table start---------------->
+                        <div class="fixed-table-container" style="height:calc(100vh - 450px);">
+                            <div class="fixed-table-header-bg"></div>
+                            <div class="fixed-table-wrapper">
+                                <table class="fixed-table input" id="create_deploy_table">
+
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 3%;">
+                                                <div><input type="checkbox" id="all_checkbox"></div>
+                                            </th>
+                                            <th style="width: 5%;">
+                                                <div>순번</div>
+                                            </th>
+                                            <th style="width: 10%;">
+                                                <div>JOB NO.</div>
+                                            </th>
+                                            <th style="width: 9%;">
+                                                <div>BOM 품번</div>
+                                            </th>
+                                            <th style="width: 8%;">
+                                                <div>Bellows Code</div>
+                                            </th>
+                                            <th style="width: 5%;">
+                                                <div>수량</div>
+                                            </th>
+                                            <th style="width: 8%;">
+                                                <div>배포일</div>
+                                            </th>
+                                            <th style="width: 8%;">
+                                                <div>납기일</div>
+                                            </th>
+                                            <th style="width: 5%;">
+                                                <div>납품처</div>
+                                            </th>
+                                            <th style="width: 5%;">
+                                                <div>구분</div>
+                                            </th>
+                                            <th style="width: 7%;">
+                                                <div>완료품목코드</div>
+                                            </th>
+                                            <th style="width: 16%;">
+                                                <div>작업지시서내용</div>
+                                            </th>
+                                            <th style="width: 3%;">
+                                                <div>도면</div>
+                                            </th>
+                                            <th style="width: 8%;">
+                                                <div>상태</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>1</td>
+                                            <td>
+                                            <a onclick="window.open('pop/pop_workorder_check.html', '작업지시서조회수정', 'left='+(screen.availWidth-1200)/2+',top='+(screen.availHeight-800)/2+', width=1200px,height=800px');" name="" style="cursor: pointer;">벨로우즈피팅</a>
+                                            </td>
+                                            <td>216541321</td>
+                                            <td>A00B00C00</td>
+                                            <td>1</td>
+                                            <td>2020.05.05</td>
+                                            <td>2020.08.05</td>
+                                            <td>XX산업</td>
+                                            <td>-</td>
+                                            <td></td>
+                                            <td><input type="text"></td>
+                                            <td>O</td>
+                                            <td>생산진행중</td>
+                                        </tr> -->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-------------------Table End------------------>
+
+
+                        <!-------------------button Starts------------------>
+                        <div class="btn_list">
+                            <div class="btn_left">
+                                <button
+                                    onclick="window.open('pop/print.html', '인쇄미리보기', 'left='+(screen.availWidth-950)/2+',top='+(screen.availHeight-850)/2+', width=950px,height=800px');"
+                                    name="print" class="btn_bs blue">인쇄</button>
+                                <a href="#" class="btn_bs" onclick="download_excel()">내보내기(Excel)</a>
+                            </div>
+                            <div>
+                                <a href="#" class="btn btn_bs search">배포</a>
+                                <div class="modal">
+                                    <!-- modal start -->
+                                    <div class="modal-content">
+                                        <div>
+                                            <div class="pop_head">
+                                                <span class="close">&times;</span>
+                                                알림
+                                            </div>
+                                            <div class="pop_content">
+                                                도면 정보가 모두 등록되었는지 확인 후 다시 시도하시기 바랍니다.
+                                                <div class="pop_btn_list">
+
+                                                    <a href="#" class="btn_bs blue">확인</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- Modal end-->
+                                <!--<div class="modal"> 두번째팝업
+                                <div class="modal-content">
+                                    <div>
+                                        <div class="pop_head">
+                                           <span class="close">&times;</span>
+                                            알림
+                                        </div>
+                                        <div class="pop_content">
+                                            선택한 작업지시서를 배포하시겠습니까?
+                                            <div class="pop_btn_list">
+                                                <a href="#" class="btn_bs">예</a>
+                                                <a href="#" class="btn_bs blue">아니오</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                                <a href="#" class="btn_bs">배포취소</a>
+                            </div>
+                            <div class="btn_right">
+                                <a href="#" onclick="job_order_delete();" class="btn btn_bs">삭제</a>
+                                <div class="modal">
+                                    <!-- modal start -->
+                                    <div class="modal-content">
+                                        <div>
+                                            <div class="pop_head">
+                                                <span class="close">&times;</span>
+                                                알림
+                                            </div>
+                                            <div class="pop_content">
+                                                배포 완료 되었거나 생산 진행중인 작업지시서는 삭제할 수 없습니다.
+                                                <div class="pop_btn_list">
+
+                                                    <a href="#" class="btn_bs blue">확인</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- Modal end-->
+                                <div class="modal">
+                                    <!-- /두번째팝업 -->
+                                    <div class="modal-content">
+                                        <div>
+                                            <div class="pop_head">
+                                                <span class="close">&times;</span>
+                                                알림
+                                            </div>
+                                            <div class="pop_content">
+                                                선택한 작업지시서를 삭제하시겠습니까?
+                                                <div class="pop_btn_list">
+                                                    <a href="#" class="btn_bs" onclick="modal_delete_ok();">예</a>
+                                                    <a href="#" class="btn_bs blue"
+                                                        onclick="modal_delete_cancle();">아니오</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    onclick="window.open('pop/pop_workorder.html', '작업지시서생성', 'left='+(screen.availWidth-1200)/2+',top='+(screen.availHeight-800)/2+', width=1200px,height=800px');"
+                                    name="" class="btn_bs blue">생성</button>
+
+                            </div>
+                        </div>
+                        <!-------------------button End------------------>
+
+
+                    </div>
+                    <!--ctn_box_inner-->
+
+
+
+                </div>
+
+
+
+            </section>
+        </div>
+    </div>
+    <script src="js/modal.js">       /*modal.js */</script>
+    <script src="js/Basic/common.js">   /*modal.js */</script>
+    <script src="js/CreateDepoly/workorder.js">   /*modal.js */</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+</body>
+
+</html>

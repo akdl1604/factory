@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space solution</title>
+
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (max-height:768px)">
+    <link rel="stylesheet" href="css/web.css" media="screen and (min-height:769px)">
+    <!--------------------팝업start------------->
+
+    <!-- ---------------날짜선택Start----------->
+    <link rel="stylesheet" href="css/datepicker.min.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/i18n/datepicker.ko.js"></script>
+    <!-- ---------------날짜선택End----------->
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1><a href="main.html"><img src="img/logo.png"></a></h1>
+            <b>거래처 관리</b>
+            <div class="set">
+                <a href="setting.html"><img src="img/ico_set.png"></a>
+                <a href="login.html"><img src="img/ico_logout.png"></a>
+            </div>
+        </header>
+        <div class="ctn">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <img src="img/icon_home.png">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bom.html">
+                            <img src="img/icon_bom.png">BOM 등록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="workorder_plan.html" class="sel_">
+                            <img src="img/icon_report_.png">작업지시서<img src="img/ico_arrow_.png" class="arrow">
+                        </a>
+                        <ul style="display: block;">
+                            <li><a href="workorder_plan.html">- 생성 계획 현황</a></li>
+                            <li><a href="workorder.html">- 생성/배포</a></li>
+                            <li><a href="workorder_preset.html">- 공정 Preset</a></li>
+                            <li><a href="workorder_setting.html">- 공정설정</a></li>
+                            <li><a href="customer.html"  class="sel">- 거래처 관리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="project_job.html">
+                            <img src="img/icon_chart.png">생산현황,이력<img src="img/ico_arrow.png" class="arrow">
+                        </a>
+                        <ul>
+                            <li><a href="project_job.html">- 프로젝트/JOB NO.</a></li>
+                            <li><a href="performance.html">- 작업 실적 관리</a></li>
+                            <li><a href="equipment_status.html">- 설비 작업 현황</a></li>
+                            <li><a href="outsourcing.html">- 외주 발주, 입고</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <section>
+                <div class="ctn_box">
+                    <div class="ctn_box_inner">
+                        <div class="search_table">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <colgroup>
+                                    <col width="120px">
+                                    <col width="">
+                                </colgroup>
+                                <tr>
+                                    <th>검색 조건</th>
+                                    <td>
+                                        <div class="sel_list">
+                                            <ul>
+                                                <li><span>· 업체명</span> <input id="CompanyName" type="text"></li>
+                                                <li><span>· 사업자 번호</span> <input id="CompanyNumber" type="text"></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <!--------------------- Table End-->
+                        <div class="btn_list">
+                            <a id="Reflush_Bt" href="#" class="btn_bs long non">검색 조건 초기화</a>
+                            <a id="Search_Bt" href="#" class="btn_bs long search">검색</a>
+                        </div>
+
+                        <!-----------------Table start---------------->
+                        <div class="fixed-table-container" style="height:calc(100vh - 370px);">
+                           <div class="fixed-table-header-bg"></div>
+                           <div class="fixed-table-wrapper">
+                            <table  class="fixed-table" >
+                                <colgroup>
+                                    <col width="3%">
+                                    <col width="5%">
+                                    <col width="40%">
+                                    <col width="52%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 3%;"><div><input id="CheckAll" type="checkbox"></div></th>
+                                        <th style="width: 5%;"><div>순번</div></th>
+                                        <th style="width: 40%;"><div>사업자 번호</div></th>
+                                        <th style="width: 52%;"><div>업체명</div></th>
+                                    </tr>
+                                </thead>
+                                <!-- customer_rewrite.html 수정 팝업-->
+                                <!-- window.open('pop/customer_rewrite.html', '', 'left='+(screen.availWidth-445)/2+',top='+(screen.availHeight-270)/2+', width=445px,height=270px'); -->
+                                <tbody id="list"></tbody>
+                            </table>
+                            </div>
+                        </div>
+                        <!-------------------Table End------------------>
+
+
+                        <!-------------------button Starts------------------>
+                        <div class="btn_list">
+                            <div class="btn_right" style="margin-top: 0;">
+                                <!-- customer_write -> customer_rewrite_insert_pop 우측 페이지 기능있음-->
+                                <a onclick="window.open('pop/customer_write.html', '', 'left='+(screen.availWidth-445)/2+',top='+(screen.availHeight-270)/2+', width=445px,height=270px');" name="" style="cursor: pointer;" class="btn_bs blue">추가</a>
+                                <a href="#" class="btn btn_bs">삭제</a>
+                                <div class="modal">
+                                    <!-- modal start -->
+                                    <div class="modal-content">
+                                        <div>
+                                            <div class="pop_head">
+                                                <span class="close">&times;</span>
+                                                알림
+                                            </div>
+                                            <div class="pop_content">
+                                                선택한 거래처 정보를 삭제하시겠습니까?
+                                                <div class="pop_btn_list">
+                                                  <a id="Delete_list" href="#" class="btn_bs">예</a>
+                                                  <a href="#" class="btn_bs blue" onclick="modal_delete_cancle();">아니오</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- Modal end-->
+                            </div>
+                        </div>
+                        <!-------------------button End------------------>
+                    </div>
+                    <!--ctn_box_inner-->
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="js/modal.js"> /*modal.js */ </script> 
+    <script src="js/Basic/common.js"></script>
+    <script src="js/AccountManage/customer.js"></script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>설비 수정</title>
+    <link rel="stylesheet" type="text/css" href="../css/web.css" />
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+</head>
+
+
+<body>
+    <div class="pop setad">
+        <p>설비 수정<a href="#" class="btn_close" onclick="ClosePopup();"></a></p>
+
+        <div class="pop_margin tdnopadding">
+            <table id="CompanyTable" style="width: 100%;">
+                <colgroup>
+                    <col width="87px">
+                    <col width="*">
+                </colgroup>
+                <thead>
+                    <tr style="display: none;">
+                        <td><input id="ORIGIN_EQUIPMENT_ID" type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>내용</th>
+                        <td><input id="ORIGIN_EQUIPMENT_CONTEXT" type="text" style="width: 800px;"></td>
+                    </tr>
+                    <tr>
+                        <th>모델</th>
+                        <td><input id="ORIGIN_EQUIPMENT_MODELNAME" type="text" style="width: 800px;"></td>
+                    </tr>
+                    <tr>
+                        <th>제조사</th>
+                        <td><input id="ORIGIN_EQUIPMENT_NAME" type="text" style="width: 800px;"></td>
+                    </tr>
+                </thead>
+            </table>
+            <div class="btn_list">
+                <a id="SelectBt" href="#" class="btn btn_bs blue">저장</a>
+            </div>
+        </div>
+
+        <script src="../js/Basic/common.js"></script>
+        <script src="../js/ProcessManage/facilitiescontent_pop.js"></script>
+
+        <script>
+            // 파라메터 정보가 저장될 오브젝트
+            var getParam = function (key) {
+                var _parammap = {};
+                document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+                    function decode(s) {
+                        return decodeURIComponent(s.split("+").join(" "));
+                    }
+
+                    _parammap[decode(arguments[1])] = decode(arguments[2]);
+                });
+
+                return _parammap[key];
+            };
+
+            // "ORIGIN_EQUIPMENT_ID" : arg1
+            // "ORIGIN_EQUIPMENT_NAME" : arg2
+            // "ORIGIN_EQUIPMENT_MODELNAME" : arg3
+            // "ORIGIN_EQUIPMENT_CONTEXT" : arg4
+            if (getParam("arg1") == undefined || getParam("arg2") == undefined || getParam("arg3") == undefined || getParam("arg4") == undefined) {
+                console.log("내용 값을 받지 않음");
+            } else {
+                $('#ORIGIN_EQUIPMENT_ID').val(getParam("arg1"));
+                $('#ORIGIN_EQUIPMENT_NAME').val(getParam("arg2"));
+                $('#ORIGIN_EQUIPMENT_MODELNAME').val(getParam("arg3"));
+                $('#ORIGIN_EQUIPMENT_CONTEXT').val(getParam("arg4"));
+            }
+        </script>
+</body>
+
+</html>

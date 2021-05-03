@@ -1,0 +1,767 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>form_all</title>
+    <meta name="robots" content="none">
+    <link rel="stylesheet" href="../../css/css.css">
+    <link rel="stylesheet" href="../../css/web.css">
+    <link rel="stylesheet" href="../../css/tabs.css">
+    <link rel="stylesheet" type="text/css" href="../../css/form.css">
+</head>
+
+<body>
+    <div style="width:100%; height:700px; overflow:auto">
+        <table>
+            <tr>
+                <th colspan="2">공정명/공정번호</th>
+                <th colspan="2">계획종료일</th>
+                <th colspan="2">작업자</th>
+                <th colspan="3">작업일</th>
+                <th colspan="1">작업수량</th>
+                <th colspan="1">불량코드</th>
+                <th colspan="1">불량수량</th>
+                <th colspan="1">양품수량</th>
+                <th colspan="3">기타사항</th>
+                <th colspan="2">CODE</th>
+                <th colspan="2">공정확인자</th>
+            </tr>
+
+            <!-- 공통 서식 start-->
+            <tr>
+                <td colspan="2" class="align_left" id="process_number">&nbsp;공정명</br>[공정번호 :___]</td>
+
+                <td colspan="2">(관리자)</td>
+
+                <td colspan="2">(자동입력)</td>
+
+                <td colspan="3">(자동입력)</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">목록에서 선택해야함</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="3"><input type="text" maxlength="15"></td>
+
+                <td colspan="2" rowspan="2">불량코드 목록에서 선택</td>
+                <td colspan="2" rowspan="2"> 계정에 등록된 서명 또는 도장 이미지 입력</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="align_center">작업내용 및</br>특이사항</td>
+
+
+                <td colspan="14"><textarea name="Text1" cols="120" rows="3" style="resize: none;"></textarea></td>
+
+            </tr>
+
+            <tr>
+                <td colspan="2" class="align_left" id="process_number">&nbsp;수입검사</br>[공정번호 :___]</td>
+
+                <td colspan="2">(관리자)</td>
+
+                <td colspan="2">(자동입력)</td>
+
+                <td colspan="3">(자동입력)</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">목록에서 선택해야함</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="3"> 합 <input type="checkbox" name="checkbox" onclick="checkOnlyOne(this,'checkbox');"> 불 <input
+                        type="checkbox" name="checkbox" onclick="checkOnlyOne(this,'checkbox');"></td>
+
+                <td colspan="2" rowspan="2">불량코드 목록에서 선택</td>
+                <td colspan="2" rowspan="2"> 계정에 등록된 서명 또는 도장 이미지 입력</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="align_center">작업내용 및</br>특이사항</td>
+
+                <td colspan="14"><textarea name="Text1" cols="120" rows="3" style="resize: none;"></textarea></td>
+
+            </tr>
+
+            <!-- 공통 서식 end-->
+
+
+
+            <!-- 반제품 불출(ID) 서식 start-->
+            <tr>
+                <td colspan="2" rowspan="4" class="align_left" id="process_number">&nbsp;반제품 불출</br>[공정번호 :___]</td>
+
+                <td colspan="2" rowspan="4">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 반제품 불출 담당자는 아래 재고 투입수량을 확인 바라며, 문제 발생시 생산관리팀에 연락바람.</td>
+            </tr>
+
+            <tr>
+                <td colspan="3">1. MD 세척 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="2" rowspan="3">code</td>
+                <td colspan="2" rowspan="3">공정확인자</td>
+            </tr>
+
+            <tr>
+
+                <td colspan="3">2. FD 세척 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+            </tr>
+
+            <!-- 반제품 불출(ID) 서식 end-->
+
+
+            <!-- 반제품 불출(OD) 서식 start-->
+
+            <tr>
+                <td colspan="2" rowspan="5" class="align_left" id="process_number">&nbsp;반제품 불출</br>[공정번호 :___]</td>
+
+                <td colspan="2" rowspan="5">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 반제품 불출 담당자는 아래 재고 투입수량을 확인 바라며, 문제 발생시 생산관리팀에 연락바람.</td>
+            </tr>
+
+            <tr>
+                <td colspan="3">1. MD 세척 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="2" rowspan="4">code</td>
+                <td colspan="2" rowspan="4">공정확인자</td>
+            </tr>
+
+            <tr>
+                <td colspan="3">2. FD 세척 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+            </tr>
+
+            <tr>
+                <td colspan="3">3. ID 용접 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+            </tr>
+
+            <!-- 반제품 불출(OD) 서식 end-->
+
+            <!-- 반제품 불출(WB) 서식 start-->
+
+            <tr>
+                <td colspan="2" rowspan="6" class="align_left" id="process_number">&nbsp;반제품 불출</br>[공정번호 :___]</td>
+
+                <td colspan="2" rowspan="6">(관리자)</td>
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 반제품 불출 담당자는 아래 재고 투입수량을 확인 바라며, 문제 발생시 생산관리팀에 연락바람.</td>
+            </tr>
+
+            <tr>
+                <td colspan="3">1. MD 세척 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="2" rowspan="4">code</td>
+                <td colspan="2" rowspan="4">공정확인자</td>
+            </tr>
+
+            <tr>
+                <td colspan="3">2. FD 세척 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+            </tr>
+
+            <tr>
+                <td colspan="3">3. ID 용접 품목번호 : </td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+            </tr>
+
+            <tr>
+                <td colspan="3"> 4. OD 용접 품목번호 :</td>
+                <td colspan="3">(관리자)</td>
+                <td colspan="3">재고사용 : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">JOB NO. : </td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+            </tr>
+
+            <!-- 반제품 불출(WB) 서식 end-->
+
+            <!-- 가공 원자재 서식 start-->
+
+
+            <tr>
+                <td colspan="2" rowspan="3" class="align_left" id="process_number">&nbsp;가공 원자재</br>[공정번호 :___]</td>
+
+                <td colspan="2" rowspan="3">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2">/</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td class="fb" colspan="2"></td>
+                <td colspan="2"><input type="text" maxlength="15"></td>
+                <td colspan="2" rowspan="3">code</td>
+                <td colspan="2" rowspan="3">공정확인자</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2">/</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td class="fb" colspan="2"></td>
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+            </tr>
+
+            <!-- 가공 원자재 서식 end-->
+
+            <!-- 샤링 서식 start-->
+
+
+            <tr>
+                <td colspan="2" rowspan="4" class="align_left" id="process_number">&nbsp;샤 링</br>[공정번호 :___]</td>
+
+                <td colspan="2" rowspan="4">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ Shearing 작업자는 상단에 명기된 자재 확인 후 LOT 번호를 기입 할 것. ■ LOT No. :</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2">/</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="2" rowspan="3">code</td>
+                <td colspan="2" rowspan="3">공정확인자</td>
+            </tr>
+
+            <tr>
+
+                <td colspan="2"></td>
+                <td colspan="2">/</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">kg</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+            </tr>
+
+            <!-- 샤링 서식 end-->
+
+
+            <!-- 프레스 서식 start-->
+
+            <tr>
+                <td colspan="2" rowspan="8" class="align_left" id="process_number">&nbsp;프레스</br>[공정번호 :___]</br>[공정번호
+                    :___]</td>
+
+                <td colspan="2" rowspan="8">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 금형 검증 유/무 : 검증 된 금형 <input type="checkbox" name="checkbox"
+                        onclick="checkOnlyOne(this);"> 검증 안된 금형 <input type="checkbox" name="checkbox"
+                        onclick="checkOnlyOne(this);"></td>
+            </tr>
+
+            <tr>
+                <td colspan="1" rowspan="2"></td>
+                <td colspan="1" rowspan="2">/</td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1" rowspan="2"><input type="text" maxlength="15"></td>
+                <td colspan="1" rowspan="2">호기</td>
+
+                <td colspan="1" rowspan="2"><input type="text" maxlength="15"></td>
+                <td colspan="1" rowspan="2">톤</td>
+
+                <td colspan="2" rowspan="7">code</td>
+                <td colspan="2" rowspan="7">공정확인자</td>
+            </tr>
+
+            <tr>
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+            </tr>
+
+            <tr>
+                <td colspan="1" rowspan="2"></td>
+                <td colspan="1" rowspan="2">/</td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1" rowspan="2"><input type="text" maxlength="15"></td>
+                <td colspan="1" rowspan="2">호기</td>
+
+                <td colspan="1" rowspan="2"><input type="text" maxlength="15"></td>
+                <td colspan="1" rowspan="2">톤</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+            </tr>
+
+            <tr>
+                <td colspan="1" rowspan="2"></td>
+                <td colspan="1" rowspan="2">/</td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">M :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1" rowspan="2"><input type="text" maxlength="15"></td>
+                <td colspan="1" rowspan="2">호기</td>
+
+                <td colspan="1" rowspan="2"><input type="text" maxlength="15"></td>
+                <td colspan="1" rowspan="2">톤</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1">F :</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+            </tr>
+
+            <!-- 프레스 서식 end-->
+
+            <!-- ID 용접 서식 start-->
+
+            <tr>
+                <td colspan="2" rowspan="6" class="align_left" id="process_number">&nbsp;ID 용접</br>[공정번호 :___]</br>[공정번호
+                    :___]</td>
+
+                <td colspan="2" rowspan="6">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="4" class="fb"> ① ID 품목번호 : </td>
+                <td colspan="2"> (관리자) </td>
+                <td colspan="4" class="fb"> ② DP 재고 투입수량 : </td>
+                <td colspan="3"> <input type="text" maxlength="15"> </td>
+                <td colspan="3" class="fb"> </td>
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 작업 특이사항 ☞ (관리자) (작업자)</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" rowspan="3">code</td>
+                <td colspan="2" rowspan="3">공정확인자</td>
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+
+
+            </tr>
+
+            <!-- ID 용접 서식 end-->
+
+
+            <!-- OD 용접 서식 start-->
+
+            <tr>
+                <td colspan="2" rowspan="6" class="align_left" id="process_number">&nbsp;OD 용접</br>[공정번호 :___]</br>[공정번호
+                    :___]</td>
+
+                <td colspan="2" rowspan="6">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="4" class="fb"> ① OD 품목번호 : </td>
+                <td colspan="2"> (관리자) </td>
+                <td colspan="4" class="fb"> ② DP 재고 투입수량 : </td>
+                <td colspan="3"> <input type="text" maxlength="15"> </td>
+                <td colspan="3" class="fb"> </td>
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 작업 특이사항 ☞ (관리자) (작업자)</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" rowspan="3">code</td>
+                <td colspan="2" rowspan="3">공정확인자</td>
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+
+
+            </tr>
+
+            <!-- OD 용접 서식 end-->
+
+
+            <!-- WBEF 용접 서식 start-->
+
+            <tr>
+                <td colspan="2" rowspan="5" class="align_left" id="process_number">&nbsp;WBEF 용접</br>[공정번호
+                    :___]</br>[공정번호 :___]</td>
+
+                <td colspan="2" rowspan="5">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 작업 전 도면 및 지그번호 확인 바라며, 문제 발생 시 생산관리팀으로 연락 바람.</td>
+
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 작업 특이사항 ☞ (관리자) (작업자)</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" rowspan="3">code</td>
+                <td colspan="2" rowspan="3">공정확인자</td>
+            </tr>
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+
+            </tr>
+
+
+            <!-- WBEF 용접 서식 end-->
+
+
+            <!-- 입고 확인 서식 start-->
+
+            <tr>
+                <td colspan="2" rowspan="5" class="align_left" id="process_number">&nbsp;입고 확인</br>[공정번호 :___]</br>[공정번호
+                    :___]</td>
+
+                <td colspan="2" rowspan="5">(관리자)</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="16" class="fb"> ※ 자재 담당자는 [ERP: 1202] 창고로 입고된 수량 및 내역 확인 후 [ERP: 1155] 재고창고로 입고 바람.</td>
+
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="1" rowspan="2" class="fb backslash"></td>
+                <td colspan="1" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> CV </td>
+                <td colspan="3"> <input type="text" maxlength="15"> </td>
+                <td colspan="2" rowspan="3">code</td>
+                <td colspan="2" rowspan="3">공정확인자</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"> </td>
+                <td colspan="2">/</td>
+                <td colspan="1" class="fb"></td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> CV </td>
+                <td colspan="3"> <input type="text" maxlength="15"> </td>
+            </tr>
+
+            <tr>
+                <td colspan="6"> ■ 최종 입고일 및 총 수량</td>
+                <td colspan="2"> <input type="text" maxlength="15"> </td>
+                <td colspan="1"> CV </td>
+                <td colspan="3"> <input type="text" maxlength="15"> </td>
+
+            </tr>
+
+            <!--입고 확인 서식 end-->
+
+
+
+            <!-- 통합 서식 start-->
+
+            <tr>
+                <th colspan="2">공정명/공정번호</th>
+                <th colspan="2">계획종료일</th>
+                <th colspan="2">작업자</th>
+                <th colspan="3">작업일</th>
+                <th colspan="1">작업수량</th>
+                <th colspan="1">불량코드</th>
+                <th colspan="1">불량수량</th>
+                <th colspan="1">양품수량</th>
+                <th colspan="3">기타사항</th>
+
+                <th colspan="2">CODE</th>
+                <th colspan="1">불출인</th>
+                <th colspan="1">인수인</th>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="align_left" id="process_number">&nbsp;반제품 불출</br>[공정번호
+                    :___]</br>[공정번호 :___]</td>
+
+                <td colspan="2">(관리자)</td>
+
+                <td colspan="2">(관리자)</td>
+
+                <td colspan="3">/</td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1">목록에서 선택해야함</td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                <td colspan="3"><input type="text" maxlength="15"></td>
+
+                <td colspan="2" rowspan="5">code</td>
+                <td colspan="1" rowspan="5">불량코드 목록에서 선택</td>
+                <td colspan="1" rowspan="5"> 계정에 등록된 서명 또는 도장 이미지 입력</td>
+
+            </tr>
+
+            <tr>
+                <th colspan="2">품명</th>
+                <th colspan="2"></th>
+                <th colspan="2">품번</th>
+                <th colspan="3">규격(Spec)</th>
+                <th colspan="4">LOT NO/COC NO/성적서 NO</th>
+                <th colspan="1">Rev.</th>
+                <th colspan="1">필요QTV</th>
+                <th colspan="1">불출QTV</th>
+            </tr>
+
+
+            <tr>
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="3"><input type="text" maxlength="15"></td>
+
+                <td colspan="4"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="3"><input type="text" maxlength="15"></td>
+
+                <td colspan="4"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="2"><input type="text" maxlength="15"></td>
+
+                <td colspan="3"><input type="text" maxlength="15"></td>
+
+                <td colspan="4"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+
+                <td colspan="1"><input type="text" maxlength="15"></td>
+                
+            </tr>
+            <!--통합 확인 서식 end-->
+        </table>
+    </div>
+
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/form.js"></script>
+
+</html>
