@@ -3,7 +3,7 @@ window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     
     //현재 임시값
-    var joborder_id = 93;
+    var joborder_id = 85;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
@@ -14,6 +14,7 @@ window.onload = function () {
         $('.order_form').empty();
         html = '';
         html += data[0].JOBORDER_CODEFILE;
+        $("#JobOrder_BELLOWSCODE").val(data[0].BOM_DETAIL_ID);
         $('.order_form').append(html);
         //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
         var type = 2; //1 관리자, 2 작업자, 3. 관리자 설비작업현황
@@ -21,7 +22,22 @@ window.onload = function () {
         //관리자, 작업자 화면 세팅 =========================================================
     });
     //관리자, 작업자 화면 세팅 =========================================================
-    fun_ajax("GET", "http://220.89.167.212:8085/testing05/SelectJoborderID", null, true, function (data) {
+    fun_ajax("GET", "http://220.89.167.212:8085/testing05/SelectJoborderDetail",null, true, function (data) {
+        $("#JobOrder_Business_Name").val(data[0].JOBORDER_DETAIL_BUSINESSNAME);
+        $("#JobOrder_Product_Name").val(data[0].JOBORDER_DETAIL_PRODUCTNAME);
+        $("#JobOrder_QUANTITY").val(data[0].JOBORDER_DETAIL_QUANTITY);
+        $("#JobOrder_Work_CompanyName").html(data[0].JOBORDER_DETAIL_CLIENT);
+        $("#JobOrder_Delivery_Day").val(data[0].JOBORDER_DETAIL_DEILVERYDAY);
+        $("#JobOrder_Number").val(data[0].JOBORDER_DETAIL_JOBNUMBER);
+        $("#JobOrder_Product_Number").val(data[0].JOBORDER_DETAIL_PRODUCTNUMBER);
+        $("#JobOrder_SIZE").val(data[0].JOBORDER_DETAIL_SIZE );
+        $("#JobOrder_SHEARINGWIDTH").val(data[0].JOBORDER_DETAIL_SHEARINGWIDTH);
+        $("#JobOrder_MD").val(data[0].JOBORDER_DETAIL_MD);
+        $("#JobOrder_FD").val(data[0].JOBORDER_DETAIL_FD);
+        $("#JobOrder_Plan_Day").val(data[0].JOBORDER_DETAIL_PLANENDDAY);
+        $("#JobOrder_PRESSNUMBER").val(data[0].JOBORDER_DETAIL_PRESSNUMBER);
+        $("#JobOrder_PRESSTON").val(data[0].JOBORDER_DETAIL_PRESSTON);
+
     });
 }
 //작업지시서 상단화면 수정 (작업자공용)
