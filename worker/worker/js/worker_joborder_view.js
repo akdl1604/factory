@@ -21,6 +21,8 @@ window.onload = function () {
         //관리자, 작업자 화면 세팅 =========================================================
     });
     //관리자, 작업자 화면 세팅 =========================================================
+    fun_ajax("GET", "http://220.89.167.212:8085/testing05/SelectJoborderID", null, true, function (data) {
+    });
 }
 //작업지시서 상단화면 수정 (작업자공용)
 function setdisplay_fromtype(type){
