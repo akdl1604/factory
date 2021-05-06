@@ -3,7 +3,7 @@ window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     
     //현재 임시값
-    var joborder_id = 85;
+    var joborder_id = 108;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
@@ -38,6 +38,10 @@ window.onload = function () {
         $("#JobOrder_PRESSNUMBER").val(data[0].JOBORDER_DETAIL_PRESSNUMBER);
         $("#JobOrder_PRESSTON").val(data[0].JOBORDER_DETAIL_PRESSTON);
 
+    });
+
+    fun_ajax("POST", "http://220.89.167.212:8085/testing05/WorkerJobView1",params, true, function (data) {
+        $("#ico_qr").children("img").attr("src",data[0].QRCODE_DIRECTORY);
     });
 }
 //작업지시서 상단화면 수정 (작업자공용)
