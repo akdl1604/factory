@@ -4,7 +4,7 @@ window.onload = function () {
     
     //현재 임시값
     var joborder_id = 108;
-    var jobsub_division = 3;
+    var jobsub_division = 1;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
@@ -49,10 +49,17 @@ window.onload = function () {
     });
 
     fun_ajax("POST", "http://220.89.167.212:8085/testing05/SelectJoborderSubtitle", params2, true, function (data){
-        if(data[0].JOBORDER_SUBTITLE_DIVISION == 1)
-        {$("#JobOrder_BELLOWSCODE").val(data[0].JOBORDER_SUBTITLE_DIVISION)}
-        else if(data[0].JOBORDER_SUBTITLE_DIVISION == 2)
-        {$("#JobOrder_BELLOWSCODE").val(data[0].JOBORDER_SUBTITLE_DIVISION)}
+        if(jobsub_division == 1 || jobsub_division ==2)
+        {
+            if(data[0].JOBORDER_SUBTITLE_DIVISION == 1)
+            {$("#JobOrder_BELLOWSCODE").val(data[0].JOBORDER_SUBTITLE_DIVISION)}
+            else if(data[0].JOBORDER_SUBTITLE_DIVISION == 2)
+            {$("#JobOrder_BELLOWSCODE").val(data[0].JOBORDER_SUBTITLE_DIVISION)}
+        }
+        else
+        {
+            {$("#JobOrder_BELLOWSCODE").val("Error")}
+        }
     });
 }
 //작업지시서 상단화면 수정 (작업자공용)
