@@ -3,14 +3,14 @@ window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     
     //현재 임시값
-    var joborder_id = 126;
+    var joborder_id = 132;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
         "JOBORDER_ID": joborder_id
     }
 
-    fun_ajax("POST", "http://220.89.167.212:8085/testing05/SelectJoborderID", params, true, function (data) {
+    fun_ajax("POST", "http://220.89.167.212:8085/testing05/WorkerJobView1", params, true, function (data) {
         $('.order_form').empty();
         html = '';
         html += data[0].JOBORDER_CODEFILE;
