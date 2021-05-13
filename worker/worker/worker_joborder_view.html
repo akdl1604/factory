@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/workorder_customer.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
+    
     <!--<link rel="stylesheet" href="css/web.css" media="screen and (max-height:1980px)">-->
 
     <link rel="stylesheet" href="css/datepicker.min.css">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/datepicker.min.js"></script>
-    <script src="js/i18n/datepicker.ko.js"></script> 
+    <script src="js/i18n/datepicker.ko.js"></script>
+    
 </head>
 
 <body>
@@ -29,13 +31,17 @@
         </div>
     </div>
     <div class="btn_list">
+        <div class="combo_center pop">
+            <select class="equipment">
+                <option disabled selected>설비 선택</option>
+            </select>
+        </div>
         <div class="btn_left pop">
             <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_save_btn();">저장</a>
         </div>
         <div class="btn_right pop">
             <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_pre_btn();">이전</a>
             <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_next_btn();">다음</a>
-
         </div>
         <!-- modal start추가팝업 -->
         <input type="hidden" class="btn" />

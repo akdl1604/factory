@@ -4,13 +4,14 @@ window.onload = function () {
     
     //현재 임시값
     var joborder_id = 144;
+    var process_id = null;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
         "JOBORDER_ID": joborder_id
     }
 
-    fun_ajax("POST", "http://220.89.167.212:8085/testing05/SelectJoborderID", params, true, function (data) {
+    fun_ajax("POST", "http://220.89.167.212:8085/testing05/WorkerJobView1", params, true, function (data) {
         $('.order_form').empty();
         html = '';
         html += data[0].JOBORDER_CODEFILE;
@@ -21,7 +22,28 @@ window.onload = function () {
         //관리자, 작업자 화면 세팅 =========================================================
     });
     //관리자, 작업자 화면 세팅 =========================================================
+
+    //설비 목록 세팅 =========================================================
+    fun_ajax("POST", "http://220.89.167.212:8085/testing05/SelectJoborderIDProcess", params, true, function (data) {
+        process_id = data[0].PROCESS_MAIN_CATEGORY_ID;
+        var params_equip =  {
+            "PROCESS_MAIN_CATEGORY_ID" : process_id
+        }
+        getequipment(params_equip);
+    });
 }
+
+//설비 정보 가져오기
+function getequipment(params){
+    fun_ajax("POST", "http://220.89.167.212:8085/testing05/SelectWorkerEquip", params, true, function (data) {
+        var listLen = data.length;
+        for (var count = 0; count < listLen; count++){
+            var option = $("<option>"+ data[count].ORIGIN_EQUIPMENT_NAME +"</option>");
+            $('.equipment').append(option);
+        }
+    });
+}
+
 //작업지시서 상단화면 수정 (작업자공용)
 function setdisplay_fromtype(type){
     //관리자 작업지시서 생성 및 수정일때
