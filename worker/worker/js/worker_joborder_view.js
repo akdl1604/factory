@@ -44,6 +44,21 @@ function getequipment(params){
     });
 }
 
+//공정시작 버튼클릭이벤트
+function workorder_WB_pop_start_btn(){
+    $('.equipment_center').empty();
+    $(".btn").attr({
+        type: "button",
+        class: "btn_bs blue"
+    });
+
+    $("#stop").val("일시정지");
+    $("#cancle").val("취소");
+    $("#end").val("작업완료");
+    //var stop_btn = $("<a href='#' class='btn_bs blue' onclick='workorder_WB_pop_stop_btn();'>일시정지</a>");
+    //$('.equipment_center').append(stop_btn);
+}
+
 //작업지시서 상단화면 수정 (작업자공용)
 function setdisplay_fromtype(type){
     //관리자 작업지시서 생성 및 수정일때
@@ -163,7 +178,7 @@ function datePickerSet(sDate, eDate, flag) {
         }
 
         sDate.datepicker({
-            language: 'ko',
+            language: 'ko', 
             autoClose: true,
             onSelect: function(dateText) {
                 $(sDate).attr("value", dateText);
