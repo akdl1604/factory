@@ -52,11 +52,19 @@ function workorder_WB_pop_start_btn(){
         class: "btn_bs blue"
     });
 
-    $("#stop").val("일시정지");
-    $("#cancle").val("취소");
-    $("#end").val("작업완료");
-    //var stop_btn = $("<a href='#' class='btn_bs blue' onclick='workorder_WB_pop_stop_btn();'>일시정지</a>");
-    //$('.equipment_center').append(stop_btn);
+    $("#btn_stop").val("일시 정지");
+    $("#btn_cancle").val("취소");
+    $("#btn_end").val("작업 완료");
+
+    $('#btn_end').prop('disabled', true);
+    $('#btn_end').css('background-color', '#95a4bf');
+}
+
+function modal_delete_ok(type){
+    if(type==1){
+        $("#btn_stop").val("작업 재개");
+        $(".modal-content").modal("hide");
+    }
 }
 
 //작업지시서 상단화면 수정 (작업자공용)
@@ -178,7 +186,7 @@ function datePickerSet(sDate, eDate, flag) {
         }
 
         sDate.datepicker({
-            language: 'ko', 
+            language: 'ko',
             autoClose: true,
             onSelect: function(dateText) {
                 $(sDate).attr("value", dateText);
