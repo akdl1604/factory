@@ -36,12 +36,10 @@ window.onload = function () {
 //설비 정보 가져오기
 function getequipment(params){
     fun_ajax("POST", "http://220.89.167.212:8085/testing05/SelectWorkerEquip", params, true, function (data) {
-        equipment = '';
-        equipment += data[0].ORIGIN_EQUIPMENT_NAME;
-        alert(data[1].ORIGIN_EQUIPMENT_NAME);
-        for (var count = 0; count < 2; count++){
-            var option = $("<option>"+data[0].ORIGIN_EQUIPMENT_NAME+"</option>");
-            $('equipment').append(option);
+        var listLen = data.length;
+        for (var count = 0; count < listLen; count++){
+            var option = $("<option>"+ data[count].ORIGIN_EQUIPMENT_NAME +"</option>");
+            $('.equipment').append(option);
         }
     });
 }
