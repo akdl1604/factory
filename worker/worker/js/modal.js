@@ -11,8 +11,14 @@ function Modal(num) {
   return function() {
     // 해당 클래스의 내용을 클릭하면 Modal을 띄웁니다.
     btns[num].onclick =  function() {
+      if($("#btn_stop").attr('value') == "작업 재개")
+      {
+        $("#btn_stop").val("일시 정지");
+      }
+      else{
         modals[num].style.display = "block";
         console.log(num);
+      }
     };
  
     // <span> 태그(X 버튼)를 클릭하면 Modal이 닫습니다.
@@ -38,3 +44,22 @@ window.onclick = function(event) {
       event.target.style.display = "none";
   }
 };
+
+//모달 확인 클릭 이벤트
+function modal_delete_ok(type){
+  if(type==0){
+      $('#btn_stop').val("작업 재개");
+      modals[type].style.display = "none";
+  }
+  else if(type==2){
+    //취소 처리
+    modals[type].style.display = "none";
+  }
+}
+
+//모달 취소 클릭 이벤트
+function modal_delete_cancle(type){
+  if(type==0 || type==2){
+      modals[type].style.display = "none";
+  }
+}

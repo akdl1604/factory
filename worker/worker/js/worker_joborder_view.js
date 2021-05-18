@@ -3,13 +3,17 @@ window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     
     //현재 임시값
-    var joborder_id = 144;
+    var joborder_id = 143;
     var process_id = null;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
         "JOBORDER_ID": joborder_id
     }
+
+    //작업 시작 버튼 비활성화
+    $('#btn_start').prop('disabled', true);
+    $('#btn_start').css('background-color', '#95a4bf');
 
     fun_ajax("POST", "http://220.89.167.212:8085/testing05/WorkerJobView1", params, true, function (data) {
         $('.order_form').empty();
@@ -52,12 +56,41 @@ function workorder_WB_pop_start_btn(){
         class: "btn_bs blue"
     });
 
-    $("#stop").val("일시정지");
-    $("#cancle").val("취소");
-    $("#end").val("작업완료");
-    //var stop_btn = $("<a href='#' class='btn_bs blue' onclick='workorder_WB_pop_stop_btn();'>일시정지</a>");
-    //$('.equipment_center').append(stop_btn);
+    $("#btn_stop").val("일시 정지");
+    $("#btn_cancle").val("취소");
+    $("#btn_end").val("작업 완료");
+
+    $('#btn_end').prop('disabled', true);
+    $('#btn_end').css('background-color', '#95a4bf');
 }
+
+//일시정지 버튼 클릭 이벤트
+$("#btn_stop").click(function(){
+    $('#cancle_date').empty();
+
+    //날짜 저장
+    var Now = new Date();
+    var NowTime = Now.getFullYear() + "-" + 
+    ("00" + (Now.getMonth() + 1)).slice(-2) + "-" + 
+    ("00" + Now.getDate()).slice(-2) + " " + 
+    ("00" + Now.getHours()).slice(-2) + ":" + 
+    ("00" + Now.getMinutes()).slice(-2) + ":" + 
+    ("00" + Now.getSeconds()).slice(-2)
+    
+    //날짜 텍스트 추가
+    var date = $("<p>" + "일시 " + NowTime + "</p>");
+    $('#cancle_date').append(date);
+    $('#cancle_date').css({
+        "position" : "absolute",
+        "right" : "40px"
+    });
+});
+
+//설비 선택 시 버튼 활성화
+$('.equipment').on('change', function(){
+    $('#btn_start').prop('disabled', false);
+    $('#btn_start').css('background-color', '#6179a3');
+});
 
 //작업지시서 상단화면 수정 (작업자공용)
 function setdisplay_fromtype(type){
@@ -178,7 +211,7 @@ function datePickerSet(sDate, eDate, flag) {
         }
 
         sDate.datepicker({
-            language: 'ko', 
+            language: 'ko',
             autoClose: true,
             onSelect: function(dateText) {
                 $(sDate).attr("value", dateText);
