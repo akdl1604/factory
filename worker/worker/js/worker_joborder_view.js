@@ -64,12 +64,33 @@ function workorder_WB_pop_start_btn(){
     $('#btn_end').css('background-color', '#95a4bf');
 }
 
-function modal_delete_ok(type){
-    if(type==1){
-        $("#btn_stop").val("작업 재개");
-        $(".modal-content").modal("hide");
-    }
-}
+//일시정지 버튼 클릭 이벤트
+$("#btn_stop").click(function(){
+    $('#cancle_date').empty();
+
+    //날짜 저장
+    var Now = new Date();
+    var NowTime = Now.getFullYear() + "-" + 
+    ("00" + (Now.getMonth() + 1)).slice(-2) + "-" + 
+    ("00" + Now.getDate()).slice(-2) + " " + 
+    ("00" + Now.getHours()).slice(-2) + ":" + 
+    ("00" + Now.getMinutes()).slice(-2) + ":" + 
+    ("00" + Now.getSeconds()).slice(-2)
+    
+    //날짜 텍스트 추가
+    var date = $("<p>" + "일시 " + NowTime + "</p>");
+    $('#cancle_date').append(date);
+    $('#cancle_date').css({
+        "position" : "absolute",
+        "right" : "40px"
+    });
+});
+
+//설비 선택 시 버튼 활성화
+$('.equipment').on('change', function(){
+    $('#btn_start').prop('disabled', false);
+    $('#btn_start').css('background-color', '#6179a3');
+});
 
 //작업지시서 상단화면 수정 (작업자공용)
 function setdisplay_fromtype(type){
