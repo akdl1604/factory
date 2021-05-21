@@ -125,7 +125,7 @@ function btn_end_work(){
     $('.equipment_center').append(option);
 }
 
-//자주 검사 취소 버튼 클릭 이벤트
+//작업 완료 취소 버튼 클릭 이벤트
 function workorder_WB_end_work_cancle_btn(){
     $('.equipment_center').empty();
 
@@ -161,7 +161,7 @@ function workorder_WB_start_inspection_btn(){
     $('#btn_inspection_save').css('background-color', '#95a4bf');
 
     $('.order_form').empty();
-    $('.order_form').load("workorder_report_view.html .wod");
+    $('#main_wod').load("workorder_report_view.html #inspection_report");
 }
 
 //자주 검사 취소 버튼 클릭 이벤트
@@ -172,6 +172,12 @@ function workorder_WB_cancle_inspection_btn(){
     "<a href='#' class='btn_bs' id='btn_end_work_cancle' onclick='workorder_WB_end_work_cancle_btn();'>" + "취소" + "</a>");
 
     $('.equipment_center').append(option);
+
+    var joborder_id = 143;
+
+    var params = {
+        "JOBORDER_ID": joborder_id
+    }
 
     fun_ajax("POST", "http://220.89.167.212:8085/testing05/WorkerJobView1", params, true, function (data) {
         $('.order_form').empty();
