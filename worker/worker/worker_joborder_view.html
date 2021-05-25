@@ -12,16 +12,18 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/workorder_customer.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
+    
     <!--<link rel="stylesheet" href="css/web.css" media="screen and (max-height:1980px)">-->
 
     <link rel="stylesheet" href="css/datepicker.min.css">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/datepicker.min.js"></script>
-    <script src="js/i18n/datepicker.ko.js"></script> 
+    <script src="js/i18n/datepicker.ko.js"></script>
+    
 </head>
 
 <body>
-    <div class="wod">
+    <div class="wod" id="main_wod">
         
         <div class="order_form">
             
@@ -29,27 +31,32 @@
         </div>
     </div>
     <div class="btn_list">
-        <div class="btn_left pop">
-            <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_save_btn();">저장</a>
+        <div class="equipment_center pop">
+            <select class="equipment">
+                <option disabled selected>설비 선택</option>
+            </select>
+            <a href="#" class="btn_bs blue" id="btn_start" onclick="workorder_WB_pop_start_btn();">작업 시작</a>
         </div>
-        <div class="btn_right pop">
-            <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_pre_btn();">이전</a>
-            <a href="#" class="btn_bs blue" onclick="workorder_WB_pop_next_btn();">다음</a>
 
-        </div>
         <!-- modal start추가팝업 -->
-        <input type="hidden" class="btn" />
-        <div class="modal">
+        <input type="hidden" class="btn" id="btn_stop"/>
+        <div class="modal" id="modal_stop">
             <div class="modal-content">
                 <div>
                     <div class="pop_head">
                         <span class="close">&times;</span>
-                        알림
+                        중지 사유
                     </div>
                     <div class="pop_content">
-                        작업지시서 서식이 완성되지 않았습니다. 확인 후 다시 시도하시기 바랍니다.
+                        <div>
+                            <textarea  name = "stop_reason" cols="40" rows="5" style="overflow:hidden"></textarea>
+                        </div>
+                        <div id="cancle_date" position="right">
+                            
+                        </div>
                         <div class="pop_btn_list">
-                            <a href="#" onclick="modal_delete_ok(1);" class="btn_bs blue">확인</a>
+                            <a href="#" onclick="modal_delete_cancle(0);" class="btn_bs blue">취소</a>
+                            <a href="#" onclick="modal_delete_ok(0);" class="btn_bs blue">확인</a>
                         </div>
                     </div>
 
@@ -58,7 +65,7 @@
         </div><!-- Modal end -->
 
         <!-- modal start추가팝업 -->
-        <input type="hidden" class="btn" />
+        <input type="hidden" class="btn" id="btn_end"/>
         <div class="modal">
             <div class="modal-content">
                 <div>
@@ -67,8 +74,28 @@
                         알림
                     </div>
                     <div class="pop_content">
-                        저장 후 다시 시도하시기 바랍니다.
+                        작업지시서 저장 완료
                         <div class="pop_btn_list">
+                            <a href="#" onclick="end_modal_delete_ok(1);" class="btn_bs blue">확인</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+       </div><!-- Modal end -->
+
+        <!-- modal start추가팝업 -->
+        <input type="hidden" class="btn" id="btn_cancle"/>
+        <div class="modal">
+            <div class="modal-content">
+                <div>
+                    <div class="pop_head">
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="pop_content">
+                        수행한 공정 내역이 모두 삭제됩니다. <br> 현재 작업을 취소하시겠습니까?
+                        <div class="pop_btn_list">
+                            <a href="#" onclick="modal_delete_cancle(2);" class="btn_bs">닫기</a>
                             <a href="#" onclick="modal_delete_ok(2);" class="btn_bs blue">확인</a>
                         </div>
                     </div>
@@ -77,46 +104,7 @@
             </div>
         </div><!-- Modal end -->
 
-        <!-- modal start추가팝업 -->
-        <input type="hidden" class="btn" />
-        <div class="modal">
-            <div class="modal-content">
-                <div>
-                    <div class="pop_head">
-                        <span class="close">&times;</span>
-                        알림
-                    </div>
-                    <div class="pop_content">
-                        저장하지 않은 정보는 모두 사라집니다. 이전단계로 진행하시겠습니까?
-                        <div class="pop_btn_list">
-                            <a href="#" onclick="modal_delete_ok(3);" class="btn_bs">예</a>
-                            <a href="#" onclick="modal_delete_cancle(3);" class="btn_bs blue">아니오</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div><!-- Modal end -->
-
-         <!-- modal start추가팝업 -->
-         <input type="hidden" class="btn" />
-         <div class="modal">
-             <div class="modal-content">
-                 <div>
-                     <div class="pop_head">
-                         <span class="close">&times;</span>
-                         알림
-                     </div>
-                     <div class="pop_content">
-                         작업지시서 저장 완료
-                         <div class="pop_btn_list">
-                             <a href="#" onclick="modal_delete_ok(4);" class="btn_bs blue">확인</a>
-                         </div>
-                     </div>
- 
-                 </div>
-             </div>
-        </div><!-- Modal end -->
+         
 
     </div>
 
