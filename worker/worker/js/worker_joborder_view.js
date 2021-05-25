@@ -149,19 +149,8 @@ function workorder_WB_end_work_cancle_btn(){
 
 //자주 검사 버튼 클릭 이벤트
 function workorder_WB_start_inspection_btn(){
-    $('.equipment_center').empty(); 
-
-    var option = $("<a href='#' class='btn_bs' id='btn_inspection_cancle' onclick='workorder_WB_cancle_inspection_btn();'>" + "취소" + "</a>" + 
-    "<a href='#' class='btn_bs' id='btn_inspection_save' onclick='workorder_WB_save_inspection_btn();'>" + "저장" + "</a>");
-
-    $('.equipment_center').append(option);
-
-    $('#btn_inspection_save').prop('disabled', true);
-    $('#btn_inspection_cancle').css('background-color', '#6f7f94');
-    $('#btn_inspection_save').css('background-color', '#95a4bf');
-
-    $('.order_form').empty();
-    $('#main_wod').load("workorder_report_view.html #inspection_report");
+    var link = 'workorder_report_view.html'
+    location.replace(link);
 }
 
 //자주 검사 취소 버튼 클릭 이벤트

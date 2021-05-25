@@ -268,6 +268,13 @@ window.onload = function () {
                 // 달력 설정
                 datePickerSet($('input[name=workDate]').eq(i));
             }
+
+            //취소 버튼 색 변경
+            $('#btn_inspection_cancle').css('background-color', '#6f7f94');
+
+            //저장 버튼 비활성화
+            $('#btn_inspection_save').prop('disabled', true);
+            $('#btn_inspection_save').css('background-color', '#95a4bf');
         });
     });
 }
@@ -277,6 +284,11 @@ window.onload = function () {
 $("#datepicker").datepicker({
     language: 'ko'
 });
+
+//자주 검사 취소 버튼 클릭 이벤트
+function workorder_WB_report_cancle_btn(){
+    history.go(-2);
+}
 
 /*
  * 달력 생성기

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="wod report" id="inspection_report">
+    <div class="wod report">
         <div class="form_top">
             <div>
                 <a href="#"><img src="img/img_print_qr.png"></a>
@@ -93,21 +93,17 @@
                         
                     </tbody>
                 </table>
-
-
-
             </div>
 
             <div style="display: none;" id="processHtml"></div>
         </div>
-        
         <p class="form_btm_txt">SQP-706-02(Rev.1) <span>(주)스페이스솔루션</span></p>
 
-        <div class="btn_list">
-            <div class=" pop">
-                <a href="#" class="btn_bs">취소</a>
-                <a href="#" class="btn_bs blue">저장</a>
-            </div>
+    </div>
+    <div class="btn_list">
+        <div class=" pop">
+            <a href="#" class="btn_bs" id="btn_inspection_cancle" onclick="workorder_WB_report_cancle_btn">취소</a>
+            <a href="#" class="btn_bs blue" id="btn_inspection_save">저장</a>
         </div>
     </div>
 </body>
