@@ -14,6 +14,12 @@ function Modal(num) {
       if($("#btn_stop").attr('value') == "작업 재개")
       {
         $("#btn_stop").val("일시 정지");
+        $('#btn_stop').css('background-color', '#6179a3');
+      }
+      else if(num == 1)
+      {
+        modals[num].style.display = "none";
+        btn_end_work();
       }
       else{
         modals[num].style.display = "block";
@@ -49,10 +55,12 @@ window.onclick = function(event) {
 function modal_delete_ok(type){
   if(type==0){
       $('#btn_stop').val("작업 재개");
+      $('#btn_stop').css('background-color', '#6f7f94');
       modals[type].style.display = "none";
   }
   else if(type==2){
     //취소 처리
+    location.reload();
     modals[type].style.display = "none";
   }
 }

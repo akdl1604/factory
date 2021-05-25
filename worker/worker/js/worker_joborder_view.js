@@ -3,6 +3,8 @@ window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     
     //현재 임시값
+    //var key = document.location.href.split("=");
+    //var joborder_id = key[1];
     var joborder_id = 143;
     var process_id = null;
 
@@ -51,17 +53,26 @@ function getequipment(params){
 //공정시작 버튼클릭이벤트
 function workorder_WB_pop_start_btn(){
     $('.equipment_center').empty();
-    $(".btn").attr({
+    $("#btn_stop").attr({
         type: "button",
         class: "btn_bs blue"
+    });
+    $("#btn_end").attr({
+        type: "button",
+        class: "btn_bs blue"
+    });
+    $("#btn_cancle").attr({
+        type: "button",
+        class: "btn_bs"
     });
 
     $("#btn_stop").val("일시 정지");
     $("#btn_cancle").val("취소");
     $("#btn_end").val("작업 완료");
 
-    $('#btn_end').prop('disabled', true);
-    $('#btn_end').css('background-color', '#95a4bf');
+    //임시 주석 처리(작업 완료 버튼)
+    //$('#btn_end').prop('disabled', true);
+    //$('#btn_end').css('background-color', '#95a4bf');
 }
 
 //일시정지 버튼 클릭 이벤트
@@ -91,6 +102,86 @@ $('.equipment').on('change', function(){
     $('#btn_start').prop('disabled', false);
     $('#btn_start').css('background-color', '#6179a3');
 });
+
+//작업 완료 버튼 클릭 이벤트
+function btn_end_work(){
+    //버튼 비활성화
+    $("#btn_stop").attr({
+        type: "hidden",
+        class: ".btn"
+    });
+    $("#btn_end").attr({
+        type: "hidden",
+        class: ".btn"
+    });
+    $("#btn_cancle").attr({
+        type: "hidden",
+        class: ".btn"
+    });
+
+    $('.equipment_center').empty();
+
+    var option = $("<a href='#' class='btn_bs blue' id='btn_inspection_start' onclick='workorder_WB_start_inspection_btn();'>" + "자주 검사" + "</a>" + 
+    "<a href='#' class='btn_bs' id='btn_end_work_cancle' onclick='workorder_WB_end_work_cancle_btn();'>" + "취소" + "</a>");
+
+    $('.equipment_center').append(option);
+}
+
+//작업 완료 취소 버튼 클릭 이벤트
+function workorder_WB_end_work_cancle_btn(){
+    $('.equipment_center').empty();
+
+    $("#btn_stop").attr({
+        type: "button",
+        class: "btn_bs blue"
+    });
+    $("#btn_end").attr({
+        type: "button",
+        class: "btn_bs blue"
+    });
+    $("#btn_cancle").attr({
+        type: "button",
+        class: "btn_bs blue"
+    });
+
+    //임시 주석 처리(작업 완료 버튼)
+    //$('#btn_end').prop('disabled', true);
+    //$('#btn_end').css('background-color', '#95a4bf');
+}
+
+//자주 검사 버튼 클릭 이벤트
+function workorder_WB_start_inspection_btn(){
+    var link = 'workorder_report_view.html'
+    location.replace(link);
+}
+
+//자주 검사 취소 버튼 클릭 이벤트
+function workorder_WB_cancle_inspection_btn(){
+    $('.equipment_center').empty();
+
+    var option = $("<a href='#' class='btn_bs blue' id='btn_inspection_start' onclick='workorder_WB_start_inspection_btn();'>" + "자주 검사" + "</a>" + 
+    "<a href='#' class='btn_bs' id='btn_end_work_cancle' onclick='workorder_WB_end_work_cancle_btn();'>" + "취소" + "</a>");
+
+    $('.equipment_center').append(option);
+
+    var joborder_id = 143;
+
+    var params = {
+        "JOBORDER_ID": joborder_id
+    }
+
+    fun_ajax("POST", "http://220.89.167.212:8085/testing05/WorkerJobView1", params, true, function (data) {
+        $('.order_form').empty();
+        html = '';
+        html += data[0].JOBORDER_CODEFILE;
+        $('.order_form').append(html);
+        //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
+        var type = 2; //1 관리자, 2 작업자, 3. 관리자 설비작업현황
+        setdisplay_fromtype(type);
+        //관리자, 작업자 화면 세팅 =========================================================
+    });
+    //관리자, 작업자 화면 세팅 =========================================================
+}
 
 //작업지시서 상단화면 수정 (작업자공용)
 function setdisplay_fromtype(type){
