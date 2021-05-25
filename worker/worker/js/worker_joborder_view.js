@@ -2,9 +2,10 @@
 window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     
+    //var key = document.location.href.split("=");
+    //var joborder_id = key[1];
     //현재 임시값
-    var key = document.location.href.split("=");
-    var joborder_id = key[1];
+    var joborder_id = 138;
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
         "JOBORDER_ID": joborder_id
