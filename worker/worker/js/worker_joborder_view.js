@@ -3,6 +3,8 @@ window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     
     //현재 임시값
+    //var key = document.location.href.split("=");
+    //var joborder_id = key[1];
     var joborder_id = 143;
     var process_id = null;
 
