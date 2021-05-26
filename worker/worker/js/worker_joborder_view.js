@@ -5,7 +5,7 @@ window.onload = function () {
     //현재 임시값
     //var key = document.location.href.split("=");
     //var joborder_id = key[1];
-    var joborder_id = 143;
+    var joborder_id = 184;
     var process_id = null;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
@@ -154,9 +154,10 @@ function workorder_WB_start_inspection_btn(){
     var link = 'workorder_report_view.html'
     location.replace(link);
 }
-
+/*
 //자주 검사 취소 버튼 클릭 이벤트
 function workorder_WB_cancle_inspection_btn(){
+    
     $('.equipment_center').empty();
 
     var option = $("<a href='#' class='btn_bs blue' id='btn_inspection_start' onclick='workorder_WB_start_inspection_btn();'>" + "자주 검사" + "</a>" + 
@@ -181,7 +182,8 @@ function workorder_WB_cancle_inspection_btn(){
         //관리자, 작업자 화면 세팅 =========================================================
     });
     //관리자, 작업자 화면 세팅 =========================================================
-}
+    
+}*/
 
 //작업지시서 상단화면 수정 (작업자공용)
 function setdisplay_fromtype(type){

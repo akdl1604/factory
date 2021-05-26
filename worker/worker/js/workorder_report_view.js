@@ -1,7 +1,7 @@
 window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
     //현재 임시값
-    var joborder_id = 157;
+    var joborder_id = 184;
 
     var params = {
         "JOBORDER_ID": joborder_id
@@ -287,7 +287,7 @@ $("#datepicker").datepicker({
 
 //자주 검사 취소 버튼 클릭 이벤트
 function workorder_WB_report_cancle_btn(){
-    history.go(-2);
+    window.history.back();
 }
 
 /*
