@@ -1,11 +1,11 @@
 
 window.onload = function () {
     //작업지시서 넘버 받아오는 부분 추가 필요
-    
-    //현재 임시값
     //var key = document.location.href.split("=");
     //var joborder_id = key[1];
-    var joborder_id = 143;
+
+    //현재 임시값
+    var joborder_id = 184;
     var process_id = null;
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
@@ -26,9 +26,28 @@ window.onload = function () {
         var type = 2; //1 관리자, 2 작업자, 3. 관리자 설비작업현황
         setdisplay_fromtype(type);
         //관리자, 작업자 화면 세팅 =========================================================
+        $()
+        //QR코드 URL 변경
+        $(".worker_view").children("li:eq(0)").children("img").attr("src",data[0].QRCODE_DIRECTORY);
+
+        //공정 결과창 비활성화
+        $(".tableprint tbody input, textarea").attr("disabled",true);
+        $(".tableprint").css("background-color","#eee");
+
+        //합, 불 값입력
+        $("input[name=pass]").attr("value","1");
+        $("input[name=npass]").attr("value","0");
+        $("input[name=npass]").attr("name","pass");
+
+        //합, 불 체크박스 중복 선택 불가
+        $("input[name=pass]").click(function(){
+            if($(this).prop('checked')){
+                $("input[name=pass]").prop("checked",false);
+                $(this).prop("checked",true);
+            }
+        });
     });
     //관리자, 작업자 화면 세팅 =========================================================
-
     //설비 목록 세팅 =========================================================
     fun_ajax("POST", "http://220.89.167.212:8085/testing05/SelectJoborderIDProcess", params, true, function (data) {
         process_id = data[0].PROCESS_MAIN_CATEGORY_ID;
@@ -37,6 +56,7 @@ window.onload = function () {
         }
         getequipment(params_equip);
     });
+
 }
 
 //설비 정보 가져오기
@@ -49,9 +69,68 @@ function getequipment(params){
         }
     });
 }
-
 //공정시작 버튼클릭이벤트
 function workorder_WB_pop_start_btn(){
+    $(".tableprint tbody input, textarea").attr("disabled",false);
+    $(".tableprint").css("background-color","#fff");
+    $("[name=JobOrder_process_worker]").html("<input type='text' size='8' />");
+    $("[name=JobOrder_process_date]").html("<input type='text' size='25' />");
+    $("[name=JobOrder_process_qty]").html("<input type='text' size='8' />");
+    $("[name=JobOrder_process_dcode]").html("<select name=dcode><option value=''>코드선택</option><option value=''>1</option><option value=''>2</option></select>");
+    $("[name=JobOrder_process_dqty]").html("<input type='text' size='8' />");
+    $("[name=JobOrder_process_eqty]").html("<input type='text' size='8' />");
+    $("[name=JobOrder_process_code]").html("<select name=dcode><option value=''>코드선택</option><option value=''>1</option><option value=''>2</option></select>");
+    $("[name=JobOrder_process_manger]").html("<input type='text' size='12' />");
+    $("[name=press_worker1]").html("<input type='text' size='8' />");
+    $("[name=press_worker2]").html("<input type='text' size='8' />");
+    $("[name=press_worker3]").html("<input type='text' size='8' />");
+    $("[name=press_workdate1]").html("<input type='text' size='8' />" + "/" + "<input type='text' size='8' />");
+    $("[name=press_workdate2]").html("<input type='text' size='8' />" + "/" + "<input type='text' size='8' />");
+    $("[name=press_workdate3]").html("<input type='text' size='8' />" + "/" + "<input type='text' size='8' />");
+    $("[name=press_worker1_m1]").html("<input type='text' size='8' />");
+    $("[name=press_worker1_m2]").html("<input type='text' size='8' />");
+    $("[name=press_worker1_m3]").html("<input type='text' size='8' />");
+    $("[name=press_worker1_m4]").html("<input type='text' size='8' />");
+    $("[name=press_worker1_f1]").html("<input type='text' size='8' />");
+    $("[name=press_worker1_f2]").html("<input type='text' size='8' />");
+    $("[name=press_worker1_f3]").html("<input type='text' size='8' />");
+    $("[name=press_worker1_f4]").html("<input type='text' size='8' />");
+    $("[name=press_arc1]").html("<input type='text' size='8' />");
+    $("[name=press_ton1]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_m1]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_m2]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_m3]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_m4]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_f1]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_f2]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_f3]").html("<input type='text' size='8' />");
+    $("[name=press_worker2_f4]").html("<input type='text' size='8' />");
+    $("[name=press_arc2]").html("<input type='text' size='8' />");
+    $("[name=press_ton2]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_m1]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_m2]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_m3]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_m4]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_f1]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_f2]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_f3]").html("<input type='text' size='8' />");
+    $("[name=press_worker3_f4]").html("<input type='text' size='8' />");
+    $("[name=press_arc3]").html("<input type='text' size='8' />");
+    $("[name=press_ton3]").html("<input type='text' size='8' />");
+    $("[name=press-code]").html("<select name=dcode><option value=''>코드선택</option><option value=''>1</option><option value=''>2</option></select>");
+    $("[name=press_manager]").html("<input type='text' size='8' />");
+    $("[name=processing_worker1]").html("<input type='text' size='12' />");
+    $("[name=processing_worker2]").html("<input type='text' size='12' />");
+    $("[name=processing_workdate1]").html("<input type='text' size='12' />" + "/" + "<input type='text' size='12' />");
+    $("[name=processing_workdate2]").html("<input type='text' size='12' />" + "/" + "<input type='text' size='12' />");
+    $("[name=processing_qty1]").html("<input type='text' size='8' />");
+    $("[name=processing_qty2]").html("<input type='text' size='8' />");
+    $("[name=processing_decode1]").html("<input type='text' size='8' />");
+    $("[name=processing_decode2]").html("<input type='text' size='8' />");
+    $("[name=processing_dqty1]").html("<input type='text' size='8' />");
+    $("[name=processing_dqty2]").html("<input type='text' size='8' />");
+    $("[name=processing_etc1]").html("<input type='text' size='15' />");
+    $("[name=processing_etc2]").html("<input type='text' size='15' />");
     $('.equipment_center').empty();
     $("#btn_stop").attr({
         type: "button",
@@ -337,4 +416,4 @@ function getURLParams(url) {
 }
 
 getURLParams(location.search);
-alert(getURLParams(location.search));
+//alert(getURLParams(location.search));
