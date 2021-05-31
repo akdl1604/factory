@@ -51,12 +51,41 @@ window.onclick = function(event) {
   }
 };
 
+//일시정지 모달
+var origin_account_id = 1;
+
+var stop_param = {
+  "ORIGIN_ACCOUNT_ID" : origin_account_id,
+  "JOBORDER_ID" : 184,
+  "JOBORDER_PROCESS_ID" : null,
+  "JOBORDER_PROCESS_RESULT_ID" : 1,
+  "JOBORDER_EQUIPMENT_ID" : 1,
+  "PROCESS_RESULT_TEMPLATE_QUANTITY" : 3,
+  "PROCESS_RESULT_TEMPLATE_BADCODE" : 2,
+  "PROCESS_RESULT_TEMPLATE_BADQUANTITY" : 4,
+  "PROCESS_RESULT_TEMPLATE_GOODQUANTITY" : 2,
+  "JOBORDER_CODEFILE" : null,
+  "JOBORDER_PROCESS_STOPRESULT_STOP_CONTEXT" : $("#stop_reason").val()
+}
+
 //모달 확인 클릭 이벤트
 function modal_delete_ok(type){
   if(type==0){
-      $('#btn_stop').val("작업 재개");
-      $('#btn_stop').css('background-color', '#6f7f94');
-      modals[type].style.display = "none";
+    fun_ajax("POST", "http://220.89.167.212:8085/testing05/StopJbWork", stop_param, true, function (data){
+        var stopjbwork = data.StopJbWork;
+        if(stopjbwork == 0)
+        {
+          $("#stop_reason").val("");
+          modals[type].style.display = "none";
+        }
+        else if(stopjbwork ==1)
+        {
+          $('#btn_stop').val("작업 재개");
+          $('#btn_stop').css('background-color', '#6f7f94');
+          modals[type].style.display = "none";
+        }
+    });
+      
   }
   else if(type==2){
     //취소 처리

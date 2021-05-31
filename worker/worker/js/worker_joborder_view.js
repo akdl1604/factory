@@ -5,8 +5,10 @@ window.onload = function () {
     //현재 임시값
     //var key = document.location.href.split("=");
     //var joborder_id = key[1];
-    var joborder_id = 143;
+    var joborder_id = 184;
     var process_id = null;
+
+    
 
     //관리자, 작업자 화면 세팅 (작업자공용) =========================================================
     var params = {
@@ -96,6 +98,7 @@ $("#btn_stop").click(function(){
         "right" : "40px"
     });
 });
+    
 
 //설비 선택 시 버튼 활성화
 $('.equipment').on('change', function(){
